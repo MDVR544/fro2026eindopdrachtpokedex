@@ -1,0 +1,39 @@
+:root {
+  --pokémon-red-color: #D43A20;
+  --pokémon-white-color: #F7F7F7;
+  --pokémon-yellow-color: #FFF447;
+  --pokémon-green-color: #74DE33;
+  --pokémon-blue-color: #00FFFF;
+  --pokémon-grey-color: #BDBDBD ;
+  --pokémon-border-color: #000000;
+  --pokémon-text-color: #000000;
+  --pokémon-button-radius: 4px;
+  --pokémon-button-background-color: var(--pokémon-grey-color);
+
+}
+
+button {
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: var(--pokémon-button-background-color);
+  border-radius: var(--pokémon-button-radius);
+  color: var(--pokémon-text-color);
+  cursor: pointer;
+}
+
+.Pokéball {
+ background-color: white;
+  height: auto;
+  width: auto;
+  padding: 12px;
+  text-align: center;
+  border-radius: 50%;
+  border-top:35px solid var(--pokémon-red-color);
+  border-left: 0 solid transparent;
+  border-right: 0 solid transparent;
+  border-bottom: 35px solid var(--pokémon-grey-color);
+  cursor: pointer;
+}
+
