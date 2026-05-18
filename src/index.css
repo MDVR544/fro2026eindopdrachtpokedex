@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 :root {
   --pokémon-red-color: #D43A20;
   --pokémon-white-color: #F7F7F7;
@@ -12,28 +21,22 @@
 
 }
 
-button {
-  font-size: 12px;
-  font-weight: bold;
-  text-align: center;
-  text-transform: uppercase;
-  background-color: var(--pokémon-button-background-color);
-  border-radius: var(--pokémon-button-radius);
-  color: var(--pokémon-text-color);
-  cursor: pointer;
+body {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
 }
 
-.Pokéball {
- background-color: white;
-  height: auto;
-  width: auto;
-  padding: 12px;
-  text-align: center;
-  border-radius: 50%;
-  border-top:35px solid var(--pokémon-red-color);
-  border-left: 0 solid transparent;
-  border-right: 0 solid transparent;
-  border-bottom: 35px solid var(--pokémon-grey-color);
-  cursor: pointer;
+button, input, select, textarea {
+  font-family: inherit;
 }
+
+button:hover {
+  background-color: var(--pokémon-button-background-color);
+}
+
+
+
 

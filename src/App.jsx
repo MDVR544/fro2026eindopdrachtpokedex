@@ -1,11 +1,18 @@
 import './App.css'
+import axios from 'axios';
+import Button from "./Components/normal button/normal button.jsx";
+import Pokeball from "./Components/pokéball/pokéball.jsx";
+import DropdownMenu from "./Components/dropdown menu/dropdown menu.jsx";
 
 function App() {
+    // import.meta.env.VITE_API_KEY
 
   return (
     <>
-<button type="button">Add to team</button>
-      <button className="Pokéball" type="submit">login</button>
+        <Button />
+        <Pokeball />
+        <DropdownMenu />
+
     </>
   )
 }
