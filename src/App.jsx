@@ -25,6 +25,7 @@ function App() {
             <Route path="/" element={<Pokedex />} />
             <Route path="*" element={<NotFound />} />
         </Routes>
+
     </>
   )
 }

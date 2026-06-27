@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 * {
   margin: 0;
@@ -18,7 +18,24 @@
   --pokémon-text-color: #000000;
   --pokémon-button-radius: 4px;
   --pokémon-button-background-color: var(--pokémon-grey-color);
-/*hier nog toevoegen, de types en de bij behorende kleuren van die types. dit worden ook de achtergronden van de pokémons.*/
+  --pokémon-type-bug-color: #A7B723;
+  --pokémon-type-dark-color: #75574C;
+  --pokémon-type-dragon-color: #7037FF;
+  --pokémon-type-electric-color: #F9CF30;
+  --pokémon-type-fairy-color: #E69EAC;
+  --pokémon-type-fighting-color: #C12239;
+  --pokémon-type-fire-color: #F57D31;
+  --pokémon-type-flying-color: #A891EC;
+  --pokémon-type-ghost-color: #70559B;
+  --pokémon-type-normal-color: #AAA67F;
+  --pokémon-type-grass-color: #74CB48;
+  --pokémon-type-ground-color: #DEC16B;
+  --pokémon-type-ice-color: #9AD6DF;
+  --pokémon-type-poison-color: #A43E9E;
+  --pokémon-type-psychic-color: #FB5584;
+  --pokémon-type-rock-color: #B69E31;
+  --pokémon-type-steel-color: #B7B9D0;
+  --pokémon-type-water-color: #6493EB;
 }
 
 body {
