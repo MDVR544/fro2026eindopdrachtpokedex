@@ -1,20 +1,76 @@
 import './pokedex.css' ;
+import {useEffect, useState} from "react";
+import axios from 'axios';
+import {SmallInfoCard} from "../../Components/infoCard/infoCards.jsx";
 import Button from "../../Components/normal button/normal button.jsx";
-import Pokeball from "../../Components/pokeball/pokeball.jsx";
-import TypeButton from "../../Components/typeButton/typeButton.jsx";
-import {FullInfoCard, SmallInfoCard} from "../../Components/infoCard/infoCard.jsx";
-import FilterSection from "../../Components/FilterSection/filterSection.jsx";
+
 
 
 function Pokedex(){
+    const [pokemon, setPokemons] = useState([]);
+    const [endpoint, setEndpoint] = useState(import.meta.env.VITE_API_POKEMON);
+    const [loading, toggleLoading] = useState(false);
+    const [error, toggleError] = useState(false);
+
+    useEffect(() => {
+        const controller = new AbortController();
+
+        async function fetchPokemonData() {
+            toggleLoading(true);
+            toggleError(false);
+
+            try {
+                const {data} = await axios.get(endpoint, {
+                    signal: controller.signal,
+                });
+                setPokemons(data);
+            } catch (e) {
+                if (axios.isCancel(e)) {
+                    console.error('Request is canceled...');
+                } else {
+                    console.error(e);
+                    toggleError(true);
+                }
+            } finally {
+                toggleLoading(false);
+            }
+        }
+        console.log(endpoint)
+        fetchPokemonData();
+
+        return function cleanup() {
+            controller.abort();
+        }
+    }, [endpoint]);
+
 
     return (
         <>
-            <h1>Pokédex page</h1>
-            <div>
-            <FullInfoCard />
-            <SmallInfoCard />
-            </div>
+            {pokemon &&
+                <>
+                    <section className="button-bar">
+                        <Button
+                            disabled={!pokemon.previous}
+                            clickHandler={() => setEndpoint(pokemon.previous)}
+                        >
+                            Vorige
+                        </Button>
+                        <Button
+                            disabled={!pokemon.next}
+                            clickHandler={() => setEndpoint(pokemon.next)}
+                        >
+                            Volgende
+                        </Button>
+                    </section>
+
+
+                    {pokemon.results && pokemon.results.map((pokemon) => {
+                        return <SmallInfoCard key={pokemon.name} endpoint={pokemon.url}/>
+                    })}
+                </>
+            }
+            {loading && <p>Loading...</p>}
+            {pokemon.length === 0 && error && <p>Er ging iets mis bij het zoeken van de Pokémons...</p>}
         </>
     );
 }

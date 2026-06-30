@@ -11,7 +11,9 @@ import NavBar from "./Components/navbar/navBar.jsx";
 import Footer from "./Components/footer/footer.jsx";
 
 function App() {
-    // import.meta.env.VITE_API_KEY
+
+
+
 
   return (
     <>
