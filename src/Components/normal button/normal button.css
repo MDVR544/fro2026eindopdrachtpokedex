@@ -1,0 +1,14 @@
+.normalButton {
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: var(--pokémon-white-color);
+    border-radius: var(--pokémon-button-radius);
+    color: var(--pokémon-text-color);
+    cursor: pointer;
+    margin: 10px;
+    padding: 5px;
+    display: inline;
+}
+

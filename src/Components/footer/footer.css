@@ -1,0 +1,10 @@
+.standardFooter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    font-size: 10px;
+    color: var(--pokémon-white-color);
+    background-color: var(--pokémon-grey-color);
+}
