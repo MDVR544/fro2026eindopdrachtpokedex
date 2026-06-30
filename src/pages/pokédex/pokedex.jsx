@@ -1,8 +1,9 @@
 import './pokedex.css' ;
 import Button from "../../Components/normal button/normal button.jsx";
-import Pokeball from "../../Components/pokéball/pokéball.jsx";
+import Pokeball from "../../Components/pokeball/pokeball.jsx";
 import TypeButton from "../../Components/typeButton/typeButton.jsx";
 import {FullInfoCard, SmallInfoCard} from "../../Components/infoCard/infoCard.jsx";
+import FilterSection from "../../Components/FilterSection/filterSection.jsx";
 
 
 function Pokedex(){
