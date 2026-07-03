@@ -2,19 +2,32 @@
     display: flex;
     flex-direction: column;
     border: 2px solid var(--pokémon-border-color);
-    width: 250px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 250px;
+    max-width: 300px;
     align-items: center;
     margin: 5px;
-
 }
 
 .pokemon-small-card-content{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
-.pokemon-small-card-content h2{
-    margin: 6px;
+
+.card-header-info{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.card-header-info h3{
+    color: #d3d3d3;
 }
 
 .pokemon-small-card-content ul{

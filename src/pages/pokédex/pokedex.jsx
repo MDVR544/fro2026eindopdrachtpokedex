@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import axios from 'axios';
 import SmallInfoCard from "../../Components/infoCard/infoCards.jsx";
 import Button from "../../Components/normal button/normal button.jsx";
+import FilterSection from "../../Components/FilterSection/filterSection.jsx";
 
 
 
@@ -44,32 +45,37 @@ function Pokedex(){
 
 
     return (
-        <>
-            {pokemon &&
-                <div className="pokemon-overview">
-                    {pokemon.results && pokemon.results.map((pokemon) => {
-                        return <SmallInfoCard key={pokemon.name} endpoint={pokemon.url}/>
-                    })}
-                </div>
-            }
-            {loading && <p>Loading...</p>}
-            {pokemon.length === 0 && error && <p>Er ging iets mis bij het zoeken van de Pokémons...</p>}
+        <div className="pokedex-page">
+            <FilterSection />
+            <div className="info-content">
+                <section>
+                  {pokemon &&
+                    <article className="pokemon-tiles">
+                        {pokemon.results && pokemon.results.map((pokemon) => {
+                            return <SmallInfoCard key={pokemon.name} endpoint={pokemon.url}/>
+                        })}
+                    </article>
+                }
+                    <div className="navigation-buttons">
+                        <Button
+                            disabled={!pokemon.previous}
+                            clickHandler={() => setEndpoint(pokemon.previous)}
+                        >
+                            Vorige
+                        </Button>
+                        <Button
+                            disabled={!pokemon.next}
+                            clickHandler={() => setEndpoint(pokemon.next)}
+                        >
+                            Volgende
+                        </Button>
+                    </div>
+                {loading && <p>Loading...</p>}
+                {pokemon.length === 0 && error && <p>Er ging iets mis bij het zoeken van de Pokémons...</p>}
 
-            <section className="navigation-buttons">
-                <Button
-                    disabled={!pokemon.previous}
-                    clickHandler={() => setEndpoint(pokemon.previous)}
-                >
-                    Vorige
-                </Button>
-                <Button
-                    disabled={!pokemon.next}
-                    clickHandler={() => setEndpoint(pokemon.next)}
-                >
-                    Volgende
-                </Button>
-            </section>
-        </>
+                </section>
+            </div>
+        </div>
     );
 }
 

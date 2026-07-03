@@ -46,6 +46,12 @@ body {
   font-variation-settings: "wdth" 100;
 }
 
+.page-wrapper{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 button, input, select, textarea {
   font-family: inherit;
 }

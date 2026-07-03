@@ -2,6 +2,7 @@ import './infoCards.css';
 import {useEffect, useState} from "react";
 import axios from 'axios';
 import GetType from "../../helpers/getType/getType.jsx";
+import IdFormater from "../../helpers/idFormater/idFormater.jsx";
 
 function SmallInfoCard({endpoint}){
     const [pokemon, setPokemon] = useState({});
@@ -48,7 +49,10 @@ function SmallInfoCard({endpoint}){
             <article className="pokemon-small-card">
                 {Object.keys(pokemon).length > 0 &&
                     <div className="pokemon-small-card-content">
-                        <h2>{pokemon.name} {pokemon.id}</h2>
+                        <div className="card-header-info">
+                        <h2>{pokemon.name}</h2>
+                        <h3> {IdFormater(pokemon.id)} </h3>
+                        </div>
                             <img
                             alt="Afbeelding pokémon"
                             src={pokemon.sprites.front_default}
