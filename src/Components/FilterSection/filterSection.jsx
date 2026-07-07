@@ -5,7 +5,8 @@ import Pokeball from "../pokeball/pokeball.jsx";
 function FilterSection() {
 
     return (
-    <>
+        <>
+    <div className="filter-side-bar">
         <div className="searchSelection">
             <h1>Search Pokémon</h1>
             <input type="text"/>
@@ -24,8 +25,8 @@ function FilterSection() {
                 </Pokeball>
             </span>
         </div>
-    </>
-
+    </div>
+        </>
     );
 }
 

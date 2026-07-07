@@ -11,20 +11,24 @@ import NavBar from "./Components/navbar/navBar.jsx";
 import Footer from "./Components/footer/footer.jsx";
 
 function App() {
-    // import.meta.env.VITE_API_KEY
+
+
+
 
   return (
     <>
-    <NavBar />
-        <Routes>
-            <Route path="account" element={<Account/>} />
-            <Route path="battleadvice" element={<BattleAdvice />} />
-            <Route path="favorites" element={<Favorites />} />
-            <Route path="myteams" element={<MyTeams />} />
-            <Route path="/" element={<Pokedex />} />
-            <Route path="*" element={<NotFound />} />
-        </Routes>
-<Footer />
+        <div className="page-wrapper">
+            <NavBar />
+                <Routes>
+                    <Route path="account" element={<Account/>} />
+                    <Route path="battleadvice" element={<BattleAdvice />} />
+                    <Route path="favorites" element={<Favorites />} />
+                    <Route path="myteams" element={<MyTeams />} />
+                    <Route path="/" element={<Pokedex />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            <Footer />
+        </div>
     </>
   )
 }

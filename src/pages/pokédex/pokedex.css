@@ -1,0 +1,22 @@
+.pokedex-page{
+    display: flex;
+    flex: 1;
+}
+
+.info-content{
+    flex: 1;
+    margin-right: 30px;
+}
+
+.pokemon-tiles{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px 15px;
+    flex: 1 1 250px;
+    justify-content: center;
+}
+
+.navigation-buttons{
+    display: flex;
+    justify-content: center;
+}

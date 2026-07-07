@@ -46,13 +46,81 @@ body {
   font-variation-settings: "wdth" 100;
 }
 
+.page-wrapper{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 button, input, select, textarea {
   font-family: inherit;
 }
 
 button:hover {
-  background-color: var(--pokémon-button-background-color);
+  background-color: var(--pokémon-red-color);
 }
+
+button:disabled{
+  cursor: not-allowed;
+  background-color: var(--pokémon-grey-color);
+}
+
+.bug{
+  background-color: var(--pokémon-type-bug-color);
+}
+.dark{
+  background-color: var(--pokémon-type-dark-color);
+}
+.dragon{
+  background-color: var(--pokémon-type-dragon-color);
+}
+.electric{
+  background-color: var(--pokémon-type-electric-color);
+}
+.fairy{
+  background-color: var(--pokémon-type-fairy-color);
+}
+.fighting{
+  background-color: var(--pokémon-type-fighting-color);
+}
+.fire{
+  background-color: var(--pokémon-type-fire-color)
+}
+.flying{
+  background-color: var(--pokémon-type-flying-color);
+}
+.ghost{
+  background-color: var(--pokémon-type-ghost-color);
+}
+.grass{
+  background-color: var(--pokémon-type-grass-color);
+}
+.ground{
+  background-color: var(--pokémon-type-ground-color);
+}
+.ice{
+  background-color: var(--pokémon-type-ice-color);
+}
+.poison{
+  background-color: var(--pokémon-type-poison-color);
+}
+.psychic{
+  background-color: var(--pokémon-type-psychic-color);
+}
+.rock{
+  background-color: var(--pokémon-type-rock-color);
+}
+.steel{
+  background-color: var(--pokémon-type-steel-color);
+}
+.water{
+  background-color: var(--pokémon-type-water-color);
+}
+.normal{
+  background-color:var(--pokémon-type-normal-color);
+}
+
+
 
 
 
