@@ -1,11 +1,11 @@
 import './pokeball.css';
 
-function Pokeball( {children}){
+function Pokeball( {children, type}){
 
     return(
         <button
             className="Pokéball"
-            type="submit"
+            type={type}
         >
             {children}
         </button>
