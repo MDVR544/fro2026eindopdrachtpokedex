@@ -18,7 +18,7 @@ function App() {
   return (
     <>
         <div className="page-wrapper">
-    <       NavBar />
+            <NavBar />
                 <Routes>
                     <Route path="account" element={<Account/>} />
                     <Route path="battleadvice" element={<BattleAdvice />} />

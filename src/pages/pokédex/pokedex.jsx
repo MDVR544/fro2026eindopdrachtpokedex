@@ -1,7 +1,7 @@
 import './pokedex.css' ;
 import {useEffect, useState} from "react";
 import axios from 'axios';
-import SmallInfoCard from "../../Components/infoCard/infoCards.jsx";
+import SmallInfoCard from "../../Components/infoCardTile/infoCardTile.jsx";
 import Button from "../../Components/normal button/normal button.jsx";
 import FilterSection from "../../Components/FilterSection/filterSection.jsx";
 
@@ -72,7 +72,6 @@ function Pokedex(){
                     </div>
                 {loading && <p>Loading...</p>}
                 {pokemon.length === 0 && error && <p>Er ging iets mis bij het zoeken van de Pokémons...</p>}
-
                 </section>
             </div>
         </div>
