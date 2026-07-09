@@ -1,16 +1,17 @@
 import './filterSection.css';
-import TypeButton from "../typeButton/typeButton.jsx";
 import Pokeball from "../pokeball/pokeball.jsx";
 import InputField from "../inputField/inputField.jsx";
+import GetType from "../../helpers/getType/getType.jsx";
 
 
-function FilterSection({ name, inputType, label, value, changeHandler, placeholder, searchPokemon}) {
+function FilterSection({ name, inputType, label, value, changeHandler, placeholder, searchPokemon, typeData, setCurrentType}) {
 
 
     function handleSubmit(e) {
         e.preventDefault();
         searchPokemon(value);
     }
+
 
 
     return (
@@ -30,7 +31,6 @@ function FilterSection({ name, inputType, label, value, changeHandler, placehold
                     changeHandler={changeHandler}
                     searchPokemon={searchPokemon}
                 />
-
                     <Pokeball type= 'submit'>
                         Search
                     </Pokeball>
@@ -41,6 +41,19 @@ function FilterSection({ name, inputType, label, value, changeHandler, placehold
 
             <div className="typeSelection">
                 <h4>type</h4>
+                {typeData &&
+                    typeData.results.map((type) => {
+                return(
+                <button
+                    key={type.name}
+                    className={GetType(type.name)}
+                    type="button"
+                    onClick={()=> {setCurrentType(type.name)}}>
+                    {type.name}
+                </button>
+                    );
+                })
+            }
             </div>
             <div className="filterButtons">
                 <span>

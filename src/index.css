@@ -67,57 +67,273 @@ button:disabled{
 
 .bug{
   background-color: var(--pokémon-type-bug-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .dark{
   background-color: var(--pokémon-type-dark-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .dragon{
   background-color: var(--pokémon-type-dragon-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .electric{
   background-color: var(--pokémon-type-electric-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .fairy{
   background-color: var(--pokémon-type-fairy-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .fighting{
   background-color: var(--pokémon-type-fighting-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .fire{
-  background-color: var(--pokémon-type-fire-color)
+  background-color: var(--pokémon-type-fire-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .flying{
   background-color: var(--pokémon-type-flying-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .ghost{
   background-color: var(--pokémon-type-ghost-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .grass{
   background-color: var(--pokémon-type-grass-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .ground{
   background-color: var(--pokémon-type-ground-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .ice{
   background-color: var(--pokémon-type-ice-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .poison{
   background-color: var(--pokémon-type-poison-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .psychic{
   background-color: var(--pokémon-type-psychic-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .rock{
   background-color: var(--pokémon-type-rock-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .steel{
   background-color: var(--pokémon-type-steel-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .water{
   background-color: var(--pokémon-type-water-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .normal{
   background-color:var(--pokémon-type-normal-color);
+  font-family: "Jersey 10", sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: none;
+  color: white;
+  margin: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 
