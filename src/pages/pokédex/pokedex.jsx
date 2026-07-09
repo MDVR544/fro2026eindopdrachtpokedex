@@ -10,22 +10,22 @@ import FilterSection from "../../Components/FilterSection/filterSection.jsx";
 function Pokedex(){
     const pokemonApi = import.meta.env.VITE_API_POKEMON;
     const typeApi = import.meta.env.VITE_API_TYPE;
-
+    const genApi = import.meta.env.VITE_API_GEN;
     // const baseUrlAPi= import.meta.env.VITE_API_BASE_URL
 
 
     const [pokemon, setPokemons] = useState({
         results: []
     });
-    const [filteredPokemon, setFilteredPokemon] = useState ([])
+    const [filtersActive, toggleFiltersActive] = useState (false);
     const [searchInput, setSearchInput] = useState ("");
     const [searchResult, setSearchResult] = useState(null)
     const [type, setType] = useState("");
-    const [currentType, setCurrentType] = useState("");
+    const [selectedType, setSelectedType] = useState("");
+    const [typeFilteredPokemon, setTypeFilteredPokemon] = useState ([])
     const [endpoint, setEndpoint] = useState(pokemonApi);
     const [loading, toggleLoading] = useState(false);
     const [error, toggleError] = useState(false);
-
 
     useEffect(() => {
         const controller = new AbortController();
@@ -57,6 +57,7 @@ function Pokedex(){
         }
     }, [endpoint]);
 
+
     useEffect(() => {
         const controller = new AbortController();
 
@@ -65,7 +66,7 @@ function Pokedex(){
             toggleError(false);
 
             try {
-                const {data} = await axios.get(typeApi, {
+                const {data} = await axios.get(`${typeApi}?limit=18&offset=0`, {
                 });
                 setType(data);
             } catch (e) {
@@ -89,17 +90,18 @@ function Pokedex(){
     useEffect(() => {
         const controller = new AbortController();
 
-        async function fetchFilteredData(currentType) {
+        async function fetchTypeFilteredData(selectedType) {
 
-            if (!currentType) return;
+            if (!selectedType) return;
 
             toggleLoading(true);
             toggleError(false);
 
             try {
-                const {data} = await axios.get(`${typeApi}${currentType}`, {
+                const {data} = await axios.get(`${typeApi}${selectedType}`, {
                 });
-                setFilteredPokemon(data.pokemon);
+                toggleFiltersActive(true);
+                setTypeFilteredPokemon(data.pokemon);
             } catch (e) {
                 if (axios.isCancel(e)) {
                     console.error('Request is canceled...');
@@ -111,13 +113,12 @@ function Pokedex(){
                 toggleLoading(false);
             }
         }
-        fetchFilteredData(currentType);
+        fetchTypeFilteredData(selectedType);
 
         return function cleanup() {
             controller.abort();
         }
-    }, [currentType]);
-
+    }, [selectedType]);
 
     async function searchPokemon(input) {
         toggleLoading(true);
@@ -126,6 +127,7 @@ function Pokedex(){
         try {
             const {data} = await axios.get(`${pokemonApi}/${input}`, {
             });
+            toggleFiltersActive(true);
             setSearchResult({
                 results: [
                     {
@@ -145,7 +147,10 @@ function Pokedex(){
             toggleLoading(false);
         }
     }
-
+function resetFilters(){
+    setSearchResult(null);
+    setTypeFilteredPokemon([]);
+}
     return (
         <div className="pokedex-page">
             <FilterSection
@@ -156,7 +161,8 @@ function Pokedex(){
                 changeHandler= {setSearchInput}
                 searchPokemon={searchPokemon}
                 typeData={type}
-                setCurrentType={setCurrentType}
+                setSelectedType={setSelectedType}
+                resetFilters={resetFilters}
             />
             <div className="info-content">
                 <section>
@@ -167,18 +173,18 @@ function Pokedex(){
                         {searchResult ?
                             (<SmallInfoCard key={searchResult.results[0].name} endpoint={searchResult.results[0].url}/>
                             ) :
-                            filteredPokemon.length > 0 ? (
-                                filteredPokemon.map((pokemon) => {
-
+                            typeFilteredPokemon.length > 0 ? (
+                                typeFilteredPokemon.map((pokemon) => {
                                     return <SmallInfoCard key={pokemon.pokemon.name} endpoint={pokemon.pokemon.url}/>
                                 })
-                                ) :
+                                    ) :
                                 pokemon.results.map((pokemon) => {
                                     return <SmallInfoCard key={pokemon.name} endpoint={pokemon.url}/>
+
                         })}
                     </article>
                 }
-                    {!searchResult &&
+                    {filtersActive === false &&
                         <div className="navigation-buttons">
                         <Button
                             disabled={!pokemon.previous}
