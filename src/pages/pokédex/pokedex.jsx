@@ -8,8 +8,22 @@ import FilterSection from "../../Components/FilterSection/filterSection.jsx";
 
 
 function Pokedex(){
-    const [pokemon, setPokemons] = useState([]);
-    const [endpoint, setEndpoint] = useState(import.meta.env.VITE_API_POKEMON);
+    const pokemonApi = import.meta.env.VITE_API_POKEMON;
+    const typeApi = import.meta.env.VITE_API_TYPE;
+    const genApi = import.meta.env.VITE_API_GEN;
+    // const baseUrlAPi= import.meta.env.VITE_API_BASE_URL
+
+
+    const [pokemon, setPokemons] = useState({
+        results: []
+    });
+    const [filtersActive, toggleFiltersActive] = useState (false);
+    const [searchInput, setSearchInput] = useState ("");
+    const [searchResult, setSearchResult] = useState(null)
+    const [type, setType] = useState("");
+    const [selectedType, setSelectedType] = useState("");
+    const [typeFilteredPokemon, setTypeFilteredPokemon] = useState ([])
+    const [endpoint, setEndpoint] = useState(pokemonApi);
     const [loading, toggleLoading] = useState(false);
     const [error, toggleError] = useState(false);
 
@@ -44,19 +58,134 @@ function Pokedex(){
     }, [endpoint]);
 
 
+    useEffect(() => {
+        const controller = new AbortController();
+
+        async function fetchTypeData() {
+            toggleLoading(true);
+            toggleError(false);
+
+            try {
+                const {data} = await axios.get(`${typeApi}?limit=18&offset=0`, {
+                });
+                setType(data);
+            } catch (e) {
+                if (axios.isCancel(e)) {
+                    console.error('Request is canceled...');
+                } else {
+                    console.error(e);
+                    toggleError(true);
+                }
+            } finally {
+                toggleLoading(false);
+            }
+        }
+        fetchTypeData();
+
+        return function cleanup() {
+            controller.abort();
+        }
+    }, []);
+
+    useEffect(() => {
+        const controller = new AbortController();
+
+        async function fetchTypeFilteredData(selectedType) {
+
+            if (!selectedType) return;
+
+            toggleLoading(true);
+            toggleError(false);
+
+            try {
+                const {data} = await axios.get(`${typeApi}${selectedType}`, {
+                });
+                toggleFiltersActive(true);
+                setTypeFilteredPokemon(data.pokemon);
+            } catch (e) {
+                if (axios.isCancel(e)) {
+                    console.error('Request is canceled...');
+                } else {
+                    console.error(e);
+                    toggleError(true);
+                }
+            } finally {
+                toggleLoading(false);
+            }
+        }
+        fetchTypeFilteredData(selectedType);
+
+        return function cleanup() {
+            controller.abort();
+        }
+    }, [selectedType]);
+
+    async function searchPokemon(input) {
+        toggleLoading(true);
+        toggleError(false);
+
+        try {
+            const {data} = await axios.get(`${pokemonApi}/${input}`, {
+            });
+            toggleFiltersActive(true);
+            setSearchResult({
+                results: [
+                    {
+                        name: data.name,
+                        url: `${pokemonApi}/${data.id}`
+                    }
+                ]
+            });
+        } catch (e) {
+            if (axios.isCancel(e)) {
+                console.error('Request is canceled...');
+            } else {
+                console.error(e);
+                toggleError(true);
+            }
+        } finally {
+            toggleLoading(false);
+        }
+    }
+function resetFilters(){
+    setSearchResult(null);
+    setTypeFilteredPokemon([]);
+}
     return (
         <div className="pokedex-page">
-            <FilterSection />
+            <FilterSection
+                name= 'search-pokemon'
+                inputType= 'text'
+                placeholder='pokemon name'
+                value= {searchInput}
+                changeHandler= {setSearchInput}
+                searchPokemon={searchPokemon}
+                typeData={type}
+                setSelectedType={setSelectedType}
+                resetFilters={resetFilters}
+            />
             <div className="info-content">
                 <section>
                   {pokemon &&
                     <article className="pokemon-tiles">
-                        {pokemon.results && pokemon.results.map((pokemon) => {
-                            return <SmallInfoCard key={pokemon.name} endpoint={pokemon.url}/>
+
+
+                        {searchResult ?
+                            (<SmallInfoCard key={searchResult.results[0].name} endpoint={searchResult.results[0].url}/>
+                            ) :
+                            typeFilteredPokemon.length > 0 ? (
+                                typeFilteredPokemon.map((pokemon) => {
+                                    return <SmallInfoCard key={pokemon.pokemon.name} endpoint={pokemon.pokemon.url}/>
+                                })
+                                    ) :
+                                pokemon.results.map((pokemon) => {
+                                    return <SmallInfoCard key={pokemon.name} endpoint={pokemon.url}/>
+
                         })}
                     </article>
                 }
-                    <div className="navigation-buttons">
+                    {filtersActive === false &&
+                        <div className="navigation-buttons">
                         <Button
                             disabled={!pokemon.previous}
                             clickHandler={() => setEndpoint(pokemon.previous)}
@@ -69,7 +198,7 @@ function Pokedex(){
                         >
                             Volgende
                         </Button>
-                    </div>
+                    </div> }
                 {loading && <p>Loading...</p>}
                 {pokemon.length === 0 && error && <p>Er ging iets mis bij het zoeken van de Pokémons...</p>}
                 </section>

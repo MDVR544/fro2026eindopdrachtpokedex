@@ -21,11 +21,11 @@ function SmallInfoCard({endpoint}){
             toggleError(false);
 
             try {
-                const { data: pokemonData } = await axios.get(endpoint, {
+                const { data } = await axios.get(endpoint, {
                     signal: controller.signal,
                 });
 
-                setPokemon(pokemonData);
+                setPokemon(data);
 
             } catch (e) {
                 if (axios.isCancel(e)) {
@@ -48,7 +48,7 @@ function SmallInfoCard({endpoint}){
             controller.abort();
         }
 
-    }, []);
+    }, [endpoint]);
 
 
     return (

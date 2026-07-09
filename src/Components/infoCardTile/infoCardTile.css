@@ -41,21 +41,6 @@
     display: flex;
 }
 
-.pokemon-small-card-content li{
-    font-family: "Jersey 10", sans-serif;
-    font-style: normal;
-    font-size: 16px;
-    font-weight: 400;
-    text-align: center;
-    text-transform: uppercase;
-    border-radius: 2px;
-    border: none;
-    color: white;
-    margin: 10px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
 .stats-content li{
     color: black;
 }
