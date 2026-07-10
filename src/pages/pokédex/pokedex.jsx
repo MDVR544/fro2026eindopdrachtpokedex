@@ -10,13 +10,11 @@ import FilterSection from "../../Components/FilterSection/filterSection.jsx";
 function Pokedex(){
     const pokemonApi = import.meta.env.VITE_API_POKEMON;
     const typeApi = import.meta.env.VITE_API_TYPE;
-    const genApi = import.meta.env.VITE_API_GEN;
+    // const genApi = import.meta.env.VITE_API_GEN;
     // const baseUrlAPi= import.meta.env.VITE_API_BASE_URL
 
 
-    const [pokemon, setPokemons] = useState({
-        results: []
-    });
+    const [pokemon, setPokemons] = useState({});
     const [filtersActive, toggleFiltersActive] = useState (false);
     const [searchInput, setSearchInput] = useState ("");
     const [searchResult, setSearchResult] = useState(null)
@@ -39,6 +37,7 @@ function Pokedex(){
                     signal: controller.signal,
                 });
                 setPokemons(data);
+
             } catch (e) {
                 if (axios.isCancel(e)) {
                     console.error('Request is canceled...');
@@ -100,8 +99,14 @@ function Pokedex(){
             try {
                 const {data} = await axios.get(`${typeApi}${selectedType}`, {
                 });
+                setSearchResult(null);
                 toggleFiltersActive(true);
                 setTypeFilteredPokemon(data.pokemon);
+                // console.log(data.damage_relations.double_damage_from);
+                // nieuwe usestate toCounterType setToCounterType en daar sla je data.damage_relations.double_damage_from in op
+                // dit is een array met 3 objecten.
+                // ipv gelijk de pokemon lijst aan te passen plaatsen we een tekst die aangeeft welke types sterk zijn tegen je geselecteerde type.
+                // dit moet ook werken als je een pokemon zoekt.
             } catch (e) {
                 if (axios.isCancel(e)) {
                     console.error('Request is canceled...');
@@ -128,14 +133,8 @@ function Pokedex(){
             const {data} = await axios.get(`${pokemonApi}/${input}`, {
             });
             toggleFiltersActive(true);
-            setSearchResult({
-                results: [
-                    {
-                        name: data.name,
-                        url: `${pokemonApi}/${data.id}`
-                    }
-                ]
-            });
+            console.log(data)
+            setSearchResult(data);
         } catch (e) {
             if (axios.isCancel(e)) {
                 console.error('Request is canceled...');
@@ -150,6 +149,7 @@ function Pokedex(){
 function resetFilters(){
     setSearchResult(null);
     setTypeFilteredPokemon([]);
+    toggleFiltersActive(false);
 }
     return (
         <div className="pokedex-page">
@@ -166,12 +166,10 @@ function resetFilters(){
             />
             <div className="info-content">
                 <section>
-                  {pokemon &&
+                    {Object.keys(pokemon).length > 0 &&
                     <article className="pokemon-tiles">
-
-
                         {searchResult ?
-                            (<SmallInfoCard key={searchResult.results[0].name} endpoint={searchResult.results[0].url}/>
+                            (<SmallInfoCard key={searchResult.name} endpoint={`${pokemonApi}/${searchResult.id}`}/>
                             ) :
                             typeFilteredPokemon.length > 0 ? (
                                 typeFilteredPokemon.map((pokemon) => {
@@ -180,7 +178,6 @@ function resetFilters(){
                                     ) :
                                 pokemon.results.map((pokemon) => {
                                     return <SmallInfoCard key={pokemon.name} endpoint={pokemon.url}/>
-
                         })}
                     </article>
                 }
