@@ -11,7 +11,7 @@ function NavBar(){
                 <ul className="navbar-list">
                     <li><NavLink to="/" className="">Pokédex</NavLink></li>
                     <li><NavLink to="myteams" className="">My Teams</NavLink></li>
-                    <li><NavLink to="battleadvice" className="">Battle Advice</NavLink></li>
+                    <li><NavLink to="signin" className="">Sign In</NavLink></li>
                     <li><NavLink to="favorites" className="">Favorites</NavLink></li>
                     <li><NavLink to="account" className="">Account</NavLink></li>
                 </ul>

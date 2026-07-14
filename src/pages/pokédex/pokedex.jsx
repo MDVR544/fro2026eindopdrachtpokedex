@@ -155,12 +155,12 @@ function Pokedex(){
         }
     }, [typeToCounter]);
 
-    async function searchPokemon(input) {
+    async function searchPokemon(searchInput) {
         toggleLoading(true);
         toggleError(false);
 
         try {
-            const {data} = await axios.get(`${pokemonApi}/${input}`, {
+            const {data} = await axios.get(`${pokemonApi}/${searchInput}`, {
             });
             toggleFiltersActive(true);
             console.log(data)
@@ -180,6 +180,7 @@ function resetTypeSearch(){
     setSearchResult(null);
     setTypeFilteredPokemon([]);
     toggleFiltersActive(false);
+    setSearchInput("");
 }
 
 function resetBattleAdvise(){
@@ -190,6 +191,7 @@ function resetBattleAdvise(){
         <div className="pokedex-page">
             <FilterSection
                 name= 'search-pokemon'
+                label='search-name'
                 inputType= 'text'
                 placeholder='pokemon name'
                 value= {searchInput}
