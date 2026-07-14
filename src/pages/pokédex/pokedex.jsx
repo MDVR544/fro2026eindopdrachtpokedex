@@ -10,19 +10,18 @@ import FilterSection from "../../Components/FilterSection/filterSection.jsx";
 function Pokedex(){
     const pokemonApi = import.meta.env.VITE_API_POKEMON;
     const typeApi = import.meta.env.VITE_API_TYPE;
-    const genApi = import.meta.env.VITE_API_GEN;
-    // const baseUrlAPi= import.meta.env.VITE_API_BASE_URL
 
 
-    const [pokemon, setPokemons] = useState({
-        results: []
-    });
+    const [pokemon, setPokemons] = useState({});
     const [filtersActive, toggleFiltersActive] = useState (false);
     const [searchInput, setSearchInput] = useState ("");
     const [searchResult, setSearchResult] = useState(null)
     const [type, setType] = useState("");
     const [selectedType, setSelectedType] = useState("");
-    const [typeFilteredPokemon, setTypeFilteredPokemon] = useState ([])
+    const [typeFilteredPokemon, setTypeFilteredPokemon] = useState ([]);
+    const [typeToCounter, setTypeToCounter] = useState("");
+    const [strengths, setStrengths] = useState([])
+    const [weaknesses, setWeaknesses] = useState ([]);
     const [endpoint, setEndpoint] = useState(pokemonApi);
     const [loading, toggleLoading] = useState(false);
     const [error, toggleError] = useState(false);
@@ -39,6 +38,7 @@ function Pokedex(){
                     signal: controller.signal,
                 });
                 setPokemons(data);
+
             } catch (e) {
                 if (axios.isCancel(e)) {
                     console.error('Request is canceled...');
@@ -56,7 +56,6 @@ function Pokedex(){
             controller.abort();
         }
     }, [endpoint]);
-
 
     useEffect(() => {
         const controller = new AbortController();
@@ -100,6 +99,7 @@ function Pokedex(){
             try {
                 const {data} = await axios.get(`${typeApi}${selectedType}`, {
                 });
+                setSearchResult(null);
                 toggleFiltersActive(true);
                 setTypeFilteredPokemon(data.pokemon);
             } catch (e) {
@@ -120,6 +120,41 @@ function Pokedex(){
         }
     }, [selectedType]);
 
+    useEffect(() => {
+        const controller = new AbortController();
+
+        async function fetchCounterTypeData(typeToCounter) {
+
+            if (!typeToCounter) return;
+
+            toggleLoading(true);
+            toggleError(false);
+
+            try {
+                const {data} = await axios.get(`${typeApi}${typeToCounter}`, {
+                });
+                setSearchResult(null);
+                toggleFiltersActive(true);
+                setStrengths(data.damage_relations.double_damage_to)
+                setWeaknesses(data.damage_relations.double_damage_from);
+            } catch (e) {
+                if (axios.isCancel(e)) {
+                    console.error('Request is canceled...');
+                } else {
+                    console.error(e);
+                    toggleError(true);
+                }
+            } finally {
+                toggleLoading(false);
+            }
+        }
+        fetchCounterTypeData(typeToCounter);
+
+        return function cleanup() {
+            controller.abort();
+        }
+    }, [typeToCounter]);
+
     async function searchPokemon(input) {
         toggleLoading(true);
         toggleError(false);
@@ -128,14 +163,8 @@ function Pokedex(){
             const {data} = await axios.get(`${pokemonApi}/${input}`, {
             });
             toggleFiltersActive(true);
-            setSearchResult({
-                results: [
-                    {
-                        name: data.name,
-                        url: `${pokemonApi}/${data.id}`
-                    }
-                ]
-            });
+            console.log(data)
+            setSearchResult(data);
         } catch (e) {
             if (axios.isCancel(e)) {
                 console.error('Request is canceled...');
@@ -147,10 +176,16 @@ function Pokedex(){
             toggleLoading(false);
         }
     }
-function resetFilters(){
+function resetTypeSearch(){
     setSearchResult(null);
     setTypeFilteredPokemon([]);
+    toggleFiltersActive(false);
 }
+
+function resetBattleAdvise(){
+        setTypeToCounter("");
+    }
+
     return (
         <div className="pokedex-page">
             <FilterSection
@@ -162,16 +197,19 @@ function resetFilters(){
                 searchPokemon={searchPokemon}
                 typeData={type}
                 setSelectedType={setSelectedType}
-                resetFilters={resetFilters}
+                setTypeToCounter={setTypeToCounter}
+                resetTypeSearch={resetTypeSearch}
+                typeToCounter={typeToCounter}
+                weaknesses={weaknesses}
+                strengths={strengths}
+                resetBattleAdvise={resetBattleAdvise}
             />
             <div className="info-content">
                 <section>
-                  {pokemon &&
+                    {Object.keys(pokemon).length > 0 &&
                     <article className="pokemon-tiles">
-
-
-                        {searchResult ?
-                            (<SmallInfoCard key={searchResult.results[0].name} endpoint={searchResult.results[0].url}/>
+                        {searchResult ? (
+                             <SmallInfoCard key={searchResult.name} endpoint={`${pokemonApi}/${searchResult.id}`}/>
                             ) :
                             typeFilteredPokemon.length > 0 ? (
                                 typeFilteredPokemon.map((pokemon) => {
@@ -180,7 +218,6 @@ function resetFilters(){
                                     ) :
                                 pokemon.results.map((pokemon) => {
                                     return <SmallInfoCard key={pokemon.name} endpoint={pokemon.url}/>
-
                         })}
                     </article>
                 }
