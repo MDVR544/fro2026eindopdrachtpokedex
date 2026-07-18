@@ -13,7 +13,6 @@ function Account(){
             <h1>Profielpagina</h1>
             <section>
                 <h2>Gegevens</h2>
-                <p><strong>Gebruikersnaam:</strong> {user.username}</p>
                 <p><strong>Email:</strong> {user.email}</p>
             </section>
 
