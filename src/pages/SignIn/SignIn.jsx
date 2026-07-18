@@ -5,29 +5,38 @@ import { AuthContext } from '/src/context/AuthContext.jsx';
 import axios from 'axios';
 
 function SignIn(){
+    const noviEndPoint = import.meta.env.VITE_NOVI_API;
+    const noviProjectId = import.meta.env.VITE_NOVI_PROJECT_ID;
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, toggleError] = useState(false);
+    const [loading, toggleLoading] = useState(false);
     const { login } = useContext(AuthContext);
 
     async function handleSubmit(e) {
         e.preventDefault();
         toggleError(false);
+        toggleLoading(true);
 
         try {
-            const result = await axios.post('http://localhost:3000/login', {
+            const result = await axios.post(`${noviEndPoint}login`, {
                 email: email,
                 password: password,
+            },{
+                headers:
+                    {
+                        'novi-education-project-id': noviProjectId,
+                    }
             });
-            // log het resultaat in de console
-            console.log(result.data);
-
-            // geef de JWT token aan de login-functie van de context mee
-            login(result.data.accessToken);
+            login(result.data.token);
 
         } catch(e) {
             console.error(e);
             toggleError(true);
+        }
+        finally{
+            toggleLoading(false);
         }
     }
 
@@ -37,11 +46,11 @@ function SignIn(){
 
             <form onSubmit={handleSubmit}>
                 <label htmlFor="email-field">
-                    E-mailadres:
+                    e-mailadres:
                     <input
                         type="email"
                         id="email-field"
-                        name="email"
+                        name="e-mail"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -62,6 +71,7 @@ function SignIn(){
                 <button
                     type="submit"
                     className="form-button"
+                    disabled={loading}
                 >
                     Inloggen
                 </button>

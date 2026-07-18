@@ -120,7 +120,6 @@
   "users": [
     {
       "id": 1,
-      "username": "Max",
       "email": "Maxdevries@gmail.com",
       "password": "Test123",
       "roles": [

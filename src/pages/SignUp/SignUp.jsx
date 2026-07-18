@@ -4,8 +4,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function SignUP(){
+    const noviEndPoint = import.meta.env.VITE_NOVI_API;
+    const noviProjectId = import.meta.env.VITE_NOVI_PROJECT_ID;
+
     const [email, setEmail] = useState('');
-    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
@@ -17,19 +19,28 @@ function SignUP(){
         toggleLoading(true);
 
         try {
-            await axios.post('http://localhost:3000/register', {
+            await axios.post(`${noviEndPoint}users`, {
                 email: email,
                 password: password,
-                username: username,
-            });
+                roles: [
+                        "user"
+                    ]
+                },
+                {
+                    headers:
+                    {
+                        'novi-education-project-id': noviProjectId,
+            }}
+            );
 
             navigate('/signin');
         } catch(e) {
             console.error(e);
             toggleError(true);
         }
-
+        finally{
         toggleLoading(false);
+        }
     }
 
     return (
@@ -48,16 +59,6 @@ function SignUP(){
                     />
                 </label>
 
-                <label htmlFor="username-field">
-                    Gebruikersnaam:
-                    <input
-                        type="text"
-                        id="username-field"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                </label>
-
                 <label htmlFor="password-field">
                     Wachtwoord:
                     <input
@@ -68,7 +69,9 @@ function SignUP(){
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </label>
+
                 {error && <p className="error">This account already exist, please select a different e-mailadres</p>}
+
                 <button
                     type="submit"
                     className="form-button"
