@@ -27,8 +27,8 @@ function App() {
                     <Route path="signin" element={<SignIn />} />
                     <Route path="signup" element={<SignUP />} />
                     <Route path="account" element={isAuth ? <Account /> : <Navigate to="/signin" />} />
-                    <Route path="favorites" element={isAuth ? <Favorites /> : <Navigate to="/signup"/>} />
-                    <Route path="myteams" element={isAuth ? <MyTeams /> : <Navigate to="/signup"/>} />
+                    <Route path="favorites" element={isAuth ? <Favorites /> : <Navigate to="/signin"/>} />
+                    <Route path="myteams" element={isAuth ? <MyTeams /> : <Navigate to="/signin"/>} />
                 </Routes>
             <Footer />
         </div>

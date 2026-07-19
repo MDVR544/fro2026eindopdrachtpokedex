@@ -83,7 +83,11 @@ function SmallInfoCard({endpoint}){
                 {Object.keys(pokemon).length === 0 && error && <p>Er ging iets mis bij het zoeken van de Pokémons...</p>}
             </article>
 
-            <InfoCardPopup trigger = {fullInfo} setTrigger={toggleFullInfo}>
+            <InfoCardPopup
+                trigger = {fullInfo}
+                setTrigger={toggleFullInfo}
+                pokemonId={pokemon.id}
+            >
                 {Object.keys(pokemon).length > 0 &&
                 <div className="pokemon-small-card-content">
                     <div className="card-header-info">

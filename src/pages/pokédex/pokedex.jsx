@@ -5,12 +5,9 @@ import SmallInfoCard from "../../Components/infoCardTile/infoCardTile.jsx";
 import Button from "../../Components/normal button/normal button.jsx";
 import FilterSection from "../../Components/FilterSection/filterSection.jsx";
 
-
-
 function Pokedex(){
     const pokemonApi = import.meta.env.VITE_API_POKEMON;
     const typeApi = import.meta.env.VITE_API_TYPE;
-
 
     const [pokemon, setPokemons] = useState({});
     const [filtersActive, toggleFiltersActive] = useState (false);
