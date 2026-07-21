@@ -95,6 +95,11 @@
           "name":"pokemonId",
           "type": "number",
           "required": true
+        },
+        {
+          "name":"userId",
+          "type": "reference:users",
+          "required": true
         }
       ],
       "permissions": {
