@@ -1,9 +1,11 @@
 import './infoCardPopup.css';
 import SetFavorite from "../../helpers/setFavorite/setFavorite.jsx";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
+import AddPokemonToTeam from "../addPokemonToTeam/addPokemonToTeam.jsx";
 
 function InfoCardPopup(props) {
+
     const { isAuth } = useContext(AuthContext);
     return(props.trigger) ? (
 <>
@@ -16,11 +18,17 @@ function InfoCardPopup(props) {
             X
         </button>
         { isAuth &&
+            <div>
             <SetFavorite
             pokemonId={props.pokemonId}
             favPokemon={props.isFavorite}
             toggleIsFavorite={props.toggleIsFavorite}
             />
+                <AddPokemonToTeam
+                    pokemonId={props.pokemonId}
+
+                />
+            </div>
         }
     </div>
 </>

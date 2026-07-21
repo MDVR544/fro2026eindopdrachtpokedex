@@ -14,6 +14,9 @@ import {AuthContext} from "../../context/AuthContext.jsx";
 
 // op teams pagina, formulier maken waar je een team kan aanmaken.
 
+// add team name moet apart component worden.
+
+
 
 
 // limiet aan aantal pokemons in 1 team:
@@ -69,7 +72,6 @@ function MyTeams(){
         }
     }
 
-
     //------------------------------------------------------------------------------------------
     useEffect(() => {
         const controller = new AbortController();
@@ -88,7 +90,6 @@ function MyTeams(){
                             Authorization: `Bearer ${ token }`,
                         }
                 });
-            console.log(data);
             setUserTeams(data)
 
         } catch(e) {
