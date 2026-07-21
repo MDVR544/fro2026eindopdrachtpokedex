@@ -7,6 +7,16 @@
     margin: 5px;
 }
 
+.fav-pokemon-small-card{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--pokémon-border-color);
+    box-shadow: 0 0 18px gold;
+    flex: 1 1 250px;
+    align-items: center;
+    margin: 5px;
+}
+
 .btn-large-view{
     background-color: white;
     border: none;

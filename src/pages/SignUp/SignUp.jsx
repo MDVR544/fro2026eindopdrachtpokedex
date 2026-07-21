@@ -70,7 +70,7 @@ function SignUP(){
                     />
                 </label>
 
-                {error && <p className="error">This account already exist, please select a different e-mailadres</p>}
+                {error && <p>This account already exist, please select a different e-mailadres</p>}
 
                 <button
                     type="submit"

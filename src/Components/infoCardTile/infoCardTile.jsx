@@ -1,15 +1,54 @@
 import './infoCardTile.css';
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import axios from 'axios';
 import GetType from "../../helpers/getType/getType.jsx";
 import IdFormater from "../../helpers/idFormater/idFormater.jsx";
 import InfoCardPopup from "../infoCardPopup/infoCardPopup.jsx";
+import {AuthContext} from "../../context/AuthContext.jsx";
 
 function SmallInfoCard({endpoint}){
+
+    const noviEndPoint = import.meta.env.VITE_NOVI_API;
+    const noviProjectId = import.meta.env.VITE_NOVI_PROJECT_ID;
+
     const [pokemon, setPokemon] = useState({});
     const [loading, toggleLoading] = useState(false);
     const [error, toggleError] = useState(false);
     const [fullInfo, toggleFullInfo] = useState(false);
+    const [isFavorite, toggleIsFavorite] = useState(false);
+
+    const token = localStorage.getItem('token');
+    const { user } = useContext(AuthContext);
+
+    async function getFavorites( pokemonId ) {
+        toggleError(false);
+        toggleLoading(true);
+
+        try {
+            const {data} = await axios.get(`${noviEndPoint}users/${user.id}/favorites` ,
+                {
+                    headers:
+                        {
+                            'novi-education-project-id': noviProjectId,
+                            Authorization: `Bearer ${ token }`,
+                        }
+                });
+
+            const isAlreadyFavorite = data.find((favorite) => {
+                return favorite.pokemonId === pokemonId;
+            });
+
+            (isAlreadyFavorite ? toggleIsFavorite(true): toggleIsFavorite(false))
+
+
+        } catch(e) {
+            console.error(e);
+            toggleError(true);
+        }
+        finally{
+            toggleLoading(false);
+        }
+    }
 
 
     useEffect(() => {
@@ -26,7 +65,7 @@ function SmallInfoCard({endpoint}){
                 });
 
                 setPokemon(data);
-
+                getFavorites(data.id);
             } catch (e) {
                 if (axios.isCancel(e)) {
                     console.error('Request is canceled...');
@@ -41,6 +80,7 @@ function SmallInfoCard({endpoint}){
 
         if (endpoint) {
             fetchPokemonData();
+
         }
 
         return () => {
@@ -49,11 +89,10 @@ function SmallInfoCard({endpoint}){
         }
 
     }, [endpoint]);
-
-
+    
     return (
         <>
-            <article className="pokemon-small-card">
+            <article className= {isFavorite ? "fav-pokemon-small-card" : "pokemon-small-card"}>
                 {Object.keys(pokemon).length > 0 &&
                     <button className="btn-large-view" type='button' onClick={() =>
                         toggleFullInfo(true,
@@ -83,7 +122,13 @@ function SmallInfoCard({endpoint}){
                 {Object.keys(pokemon).length === 0 && error && <p>Er ging iets mis bij het zoeken van de Pokémons...</p>}
             </article>
 
-            <InfoCardPopup trigger = {fullInfo} setTrigger={toggleFullInfo}>
+            <InfoCardPopup
+                trigger = {fullInfo}
+                setTrigger={toggleFullInfo}
+                pokemonId={pokemon.id}
+                isFavorite={isFavorite}
+                toggleIsFavorite={toggleIsFavorite}
+            >
                 {Object.keys(pokemon).length > 0 &&
                 <div className="pokemon-small-card-content">
                     <div className="card-header-info">
