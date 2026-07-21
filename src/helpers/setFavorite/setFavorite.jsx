@@ -2,22 +2,19 @@ import './setFavorite.css';
 import axios from "axios";
 import {useContext, useState} from 'react';
 import {AuthContext} from "../../context/AuthContext.jsx";
-// post request maken die een pokemon toevoegt aan de data base
-// pokemon id en ingelogde userId meegeven.
 
-
-function SetFavorite(pokemonId){
+function SetFavorite({pokemonId, favPokemon, toggleIsFavorite}){
     const noviEndPoint = import.meta.env.VITE_NOVI_API;
     const noviProjectId = import.meta.env.VITE_NOVI_PROJECT_ID;
 
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
-    const [isFavorite, toggleIsFavorite] = useState(false);
 
     const token = localStorage.getItem('token');
     const { user } = useContext(AuthContext);
 
-    async function favorite( {pokemonId} ) {
+
+    async function favorite( pokemonId ) {
         toggleError(false);
         toggleLoading(true);
 
@@ -44,8 +41,8 @@ function SetFavorite(pokemonId){
                                 Authorization: `Bearer ${ token }`,
                             }}
                 );
+                toggleIsFavorite(false)
 
-                {toggleIsFavorite(false)};
             }else{
 
             await axios.post(`${noviEndPoint}favorites`, {
@@ -59,7 +56,8 @@ function SetFavorite(pokemonId){
                             Authorization: `Bearer ${ token }`,
                         }}
             );
-                {toggleIsFavorite(true)};
+                toggleIsFavorite(true)
+
             }
         } catch(e) {
             console.error(e);
@@ -74,7 +72,7 @@ function SetFavorite(pokemonId){
     return(
         <>
             <button className="btn-fav" type="button" onClick={()=> {(favorite(pokemonId))}}>
-                {isFavorite ? "Delete Favorite" : "Favorite"}
+                {favPokemon ? "Delete Favorite" : "Favorite"}
             </button>
 
             {loading && <p>Adding pokemon to your favorites...</p>}

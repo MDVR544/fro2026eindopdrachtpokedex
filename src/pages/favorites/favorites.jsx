@@ -56,7 +56,7 @@ function Favorites(){
         <>
             <h1>Favorites page</h1>
                 <section>
-                    {Object.keys(favoritePokemon).length > 0 ?(
+                    {Object.keys(favoritePokemon).length > 0 ? (
                         <article className="pokemon-tiles">
                             {favoritePokemon &&
                                 favoritePokemon.map((favoritePokemon) => {
@@ -68,7 +68,7 @@ function Favorites(){
                             <p>No favorites selected</p>
                         )
                     }
-                    {loading && <p>Loading...</p>}
+                    {loading && <p>Getting your favorite Pokémons</p>}
                     {favoritePokemon.length === 0 && error && <p>Something went wrong when loading your favorites</p>}
                 </section>
         </>

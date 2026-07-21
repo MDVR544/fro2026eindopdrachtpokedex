@@ -5,7 +5,6 @@ import {AuthContext} from "../../context/AuthContext.jsx";
 
 function InfoCardPopup(props) {
     const { isAuth } = useContext(AuthContext);
-
     return(props.trigger) ? (
 <>
     <div className="large-view">
@@ -19,7 +18,9 @@ function InfoCardPopup(props) {
         { isAuth &&
             <SetFavorite
             pokemonId={props.pokemonId}
-        />
+            favPokemon={props.isFavorite}
+            toggleIsFavorite={props.toggleIsFavorite}
+            />
         }
     </div>
 </>
