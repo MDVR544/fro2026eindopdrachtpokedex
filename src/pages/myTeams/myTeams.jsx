@@ -35,7 +35,7 @@ function MyTeams(){
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
     const [teamName, setTeamName] = useState('')
-    const [userTeams, setUserTeams] = useState({});
+    const [userTeams, setUserTeams] = useState([]);
 
     const token = localStorage.getItem('token');
     const { user } = useContext(AuthContext);
@@ -135,7 +135,12 @@ function MyTeams(){
                 </button>
             </form>
 
+            <div>
+                {userTeams.map((team) => {
+                    return  <h3 key={team.id}>{team.name}</h3>
+                })}
 
+            </div>
 
         </>
     );
