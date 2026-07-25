@@ -2,6 +2,8 @@ import './addPokemonToTeam.css';
 import axios from "axios";
 import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
+import teamValidation from "../../helpers/teamValidation/teamValidation.jsx";
+
 
 function AddPokemonToTeam({pokemonId}){
     const noviEndPoint = import.meta.env.VITE_NOVI_API;
@@ -9,7 +11,7 @@ function AddPokemonToTeam({pokemonId}){
 
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
-    const [succesMessage, toggleSuccesMessage] = useState(false);
+    const [message, setMessage] = useState('');
     const [teamNames, setTeamNames] = useState([]);
     const [selectedTeam, setSelectedTeam] = useState(0);
 
@@ -55,6 +57,27 @@ function AddPokemonToTeam({pokemonId}){
         toggleLoading(true);
 
         try {
+            const {data} = await axios.get(`${noviEndPoint}users/${user.id}/pokemonTeams` ,
+                {
+                    headers:
+                        {
+                            'novi-education-project-id': noviProjectId,
+                            Authorization: `Bearer ${ token }`,
+                        }
+                });
+            const checkedTeam = {
+                data,
+                pokemonId,
+                selectedTeam
+            };
+
+            const validationResult = teamValidation(checkedTeam);
+
+            if (validationResult.fullTeam === true){
+                setMessage('Maximum number of pokemons in one team has been reached')
+            }else if(validationResult.existingPokemon === true){
+                setMessage('This pokemon is already exist in selected team')
+            }else {
             await axios.post(`${noviEndPoint}pokemonTeams`, {
                     teamId: selectedTeam,
                     pokemonId: pokemonId,
@@ -67,7 +90,8 @@ function AddPokemonToTeam({pokemonId}){
                             Authorization: `Bearer ${ token }`,
                         }}
             );
-            toggleSuccesMessage(true);
+            setMessage('Pokemon has been succesfully added to the team');
+            }
         } catch(e) {
             console.error(e);
             toggleError(true);
@@ -98,7 +122,7 @@ function AddPokemonToTeam({pokemonId}){
                         })}
                     </select>
                 </label>
-                {succesMessage && <p>Pokemon has been added to your team.</p>}
+                {message}
                 {error && <p>something went wrong adding pokemon to the team</p>}
                 <button
                     type="submit"

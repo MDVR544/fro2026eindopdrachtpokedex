@@ -4,18 +4,6 @@ import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import SmallInfoCard from "../../Components/infoCardTile/infoCardTile.jsx";
 
-// knop, "add to team"
-// als je op de knop drukt komt er een scherm omhoog waar je een team naam kan invoeren,
-// en als beschikbaar er een select functie is met alle beschikbare teams.
-// team naam moet opgeslagen worden onder "teams" in backend
-// op teams pagina moet dan weergegeven worden, pokemonTeams.
-
-// in component infoCardPopUp een component maken "addToTeam" die dan een scherm omhoog geeft
-// waar je uit de beschikbare teams kan kiezen.
-
-// op teams pagina, formulier maken waar je een team kan aanmaken.
-
-// add team name moet apart component worden.
 
 // limiet aan aantal pokemons in 1 team:
 // 1. Haal alle Pokémon van dit team op.
@@ -25,15 +13,6 @@ import SmallInfoCard from "../../Components/infoCardTile/infoCardTile.jsx";
 //     Nee → nieuwe Pokémon toevoegen.
 
 // controle op bestaande team naam
-
-
-// verwijder functie:
-// 1. Zoek alle TeamPokemon-records met teamId.
-// 2. Verwijder die TeamPokemon-records.
-// 3. Verwijder daarna team.
-
-
-
 
 function MyTeams(){
     const noviEndPoint = import.meta.env.VITE_NOVI_API;
