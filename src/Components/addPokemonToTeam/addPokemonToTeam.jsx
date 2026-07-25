@@ -9,6 +9,7 @@ function AddPokemonToTeam({pokemonId}){
 
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
+    const [succesMessage, toggleSuccesMessage] = useState(false);
     const [teamNames, setTeamNames] = useState([]);
     const [selectedTeam, setSelectedTeam] = useState(0);
 
@@ -66,7 +67,7 @@ function AddPokemonToTeam({pokemonId}){
                             Authorization: `Bearer ${ token }`,
                         }}
             );
-
+            toggleSuccesMessage(true);
         } catch(e) {
             console.error(e);
             toggleError(true);
@@ -97,6 +98,7 @@ function AddPokemonToTeam({pokemonId}){
                         })}
                     </select>
                 </label>
+                {succesMessage && <p>Pokemon has been added to your team.</p>}
                 {error && <p>something went wrong adding pokemon to the team</p>}
                 <button
                     type="submit"
@@ -106,7 +108,6 @@ function AddPokemonToTeam({pokemonId}){
                     Add to team
                 </button>
             </form>
-
         </div>
     )
 }

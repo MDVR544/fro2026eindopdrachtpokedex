@@ -79,7 +79,6 @@ function SignUP(){
                 >
                     Registreren
                 </button>
-
             </form>
 
             <p>Already have an account? please sign in <Link to="/signin">here</Link>.</p>
