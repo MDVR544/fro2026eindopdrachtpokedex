@@ -4,16 +4,6 @@ import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import SmallInfoCard from "../../Components/infoCardTile/infoCardTile.jsx";
 
-
-// limiet aan aantal pokemons in 1 team:
-// 1. Haal alle Pokémon van dit team op.
-// 2. Tel hoeveel records er zijn.
-// 3. Zijn het er al 6?
-//     Ja → foutmelding.
-//     Nee → nieuwe Pokémon toevoegen.
-
-// controle op bestaande team naam
-
 function MyTeams(){
     const noviEndPoint = import.meta.env.VITE_NOVI_API;
     const noviProjectId = import.meta.env.VITE_NOVI_PROJECT_ID;

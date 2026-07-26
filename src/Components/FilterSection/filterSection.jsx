@@ -1,6 +1,8 @@
 import './filterSection.css';
 import InputField from "../inputField/inputField.jsx";
 import GetType from "../../helpers/getType/getType.jsx";
+import {useContext} from "react";
+import {AuthContext} from "../../context/AuthContext.jsx";
 
 function FilterSection({ name,
                          inputType,
@@ -19,6 +21,7 @@ function FilterSection({ name,
                          resetBattleAdvise,
                          })
 {
+    const { isAuth } = useContext(AuthContext);
 
     return (
     <>
@@ -61,6 +64,7 @@ function FilterSection({ name,
                 >
                     reset search
                 </button>
+                { isAuth &&
                     <div className="battle-advise-section">
                         <h1>Battle Advise</h1>
                         <div className="typeSelection">
@@ -118,15 +122,18 @@ function FilterSection({ name,
                             <h3>Choose a type to see its strengths and weaknesses</h3>
                             }
                         </div>
-                    </div>
+
                     <button
                         type= 'button'
                         onClick={()=> resetBattleAdvise()}
                     >
                         reset advise
                     </button>
+                    </div>
+            }
             </div>
         </div>
+
     </>
     );
 }
