@@ -33,7 +33,6 @@ function SmallInfoCard({endpoint}){
                             Authorization: `Bearer ${ token }`,
                         }
                 });
-
             const isAlreadyFavorite = data.find((favorite) => {
                 return favorite.pokemonId === pokemonId;
             });
