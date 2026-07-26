@@ -158,7 +158,6 @@ function MyTeams(){
                     },
                 }
             );
-
             setUserPokemonTeams(userPokemonTeams.filter((pokemonTeam) => {
                     return Number(pokemonTeam.teamId) !== Number(teamId)
                     })
@@ -172,6 +171,40 @@ function MyTeams(){
             toggleLoading(false);
         }
     }
+
+    async function deletePokemonFromTeam(teamId, pokemonId) {
+        toggleError(false);
+        toggleLoading(true);
+
+        try {
+            const deletePokemonId = userPokemonTeams.find((pokemonTeam) => {
+                return (
+                    Number(pokemonTeam.teamId) === Number(teamId) &&
+                    Number(pokemonTeam.pokemonId) === Number(pokemonId)
+                );
+            });
+
+                await axios.delete(
+                    `${noviEndPoint}pokemonTeams/${deletePokemonId.id}`,
+                    {
+                        headers: {
+                            'novi-education-project-id': noviProjectId,
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+            setUserPokemonTeams(userPokemonTeams.filter((pokemonTeam) => {
+                   return   pokemonTeam.id !== deletePokemonId.id
+                })
+            );
+        } catch (e) {
+            console.error(e);
+            toggleError(true);
+        } finally {
+            toggleLoading(false);
+        }
+    }
+
 
     return (
         <>
@@ -218,10 +251,19 @@ function MyTeams(){
                             <article className="pokemon-tiles">
                                 {filteredTeam.map((pokemonTeam) => {
                                     return (
-                                        <SmallInfoCard
+                                        <div
                                             key={pokemonTeam.id}
+                                        >
+                                        <button
+                                            type="button"
+                                            onClick={()=>{deletePokemonFromTeam(team.id, pokemonTeam.pokemonId)}}
+                                            disabled={loading}
+                                        > Delete pokemon
+                                        </button>
+                                        <SmallInfoCard
                                             endpoint={`${pokemonApi}/${pokemonTeam.pokemonId}`}
                                         />
+                                        </div>
                                     );
                                 })}
                             </article>
