@@ -24,7 +24,7 @@ function GetType(type){
         case 'grass':
             return 'grass'
         case 'ground':
-            return 'grass'
+            return 'ground'
         case 'ice':
             return 'ice'
         case 'poison':
