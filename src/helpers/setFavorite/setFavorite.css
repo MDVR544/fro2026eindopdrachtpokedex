@@ -1,0 +1,9 @@
+.btn-fav {
+    font-size: 30px;
+    padding-top: 12px;
+    background-color: var(--pokémon-type-electric-color);
+    border: 1px solid var(--pokémon-type-electric-color);
+    width: 325px;
+    height: 150px;
+    color: var(--pokémon-text-color);
+}

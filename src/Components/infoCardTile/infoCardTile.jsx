@@ -129,8 +129,9 @@ function SmallInfoCard({endpoint}){
                 toggleIsFavorite={toggleIsFavorite}
             >
                 {Object.keys(pokemon).length > 0 &&
-                <div className="pokemon-small-card-content">
-                    <div className="card-header-info">
+                <div className="pokemon-large-card-content">
+                    <div className="top-card-content">
+                    <div className="large-card-header-info">
                         <h2>{pokemon.name}</h2>
                         <h3> {IdFormater(pokemon.id)} </h3>
                     </div>
@@ -138,6 +139,7 @@ function SmallInfoCard({endpoint}){
                         alt="Afbeelding pokémon"
                         src={pokemon.sprites.front_default}
                     />
+                        <div className="large-card-info-content">
                     <ul>
                         {pokemon.types.map((type) => {
                             return (
@@ -147,30 +149,45 @@ function SmallInfoCard({endpoint}){
                             )
                         })}
                     </ul>
+                        </div>
+                    </div>
                     <h4>About</h4>
-                    <ul>
-                        <li>Weight: {pokemon.weight}</li>
-                        <li>Height: {pokemon.height}</li>
-                    </ul>
+                    <div className="about-content">
+                        <ul>
+                            <li>
+                                <span className="about-value">{pokemon.weight / 10} kg</span>
+                                <span className="about-name">Weight</span>
+                            </li>
+                            <li>
+                                <span className="about-value">{pokemon.height / 10} m</span>
+                                <span className="about-name">Height</span>
+                            </li>
+                        </ul>
+
+                    </div>
                     <h4>Base Stats</h4>
                     <div className="stats-content">
                         <ul>
                             {pokemon.stats.map((stat) => (
                                 <li key={stat.stat.name}>
-                                    {stat.stat.name}: {stat.base_stat}
+                                    <span className="stat-name">{stat.stat.name}</span>
+                                    <span className="stat-value">{stat.base_stat}</span>
                                 </li>
                             ))}
                         </ul>
                     </div>
-                    <ul>
-                        {pokemon.abilities.map((ability) => {
-                            return (
-                                <li key={`${ability.ability.name}-${pokemon.name}`}>
-                                    {ability.ability.name}
-                                </li>
-                            )
-                        })}
-                    </ul>
+                    <h4>Abilities</h4>
+                    <div className="ability-content">
+                        <ul>
+                            {pokemon.abilities.map((ability) => {
+                                return (
+                                    <li key={`${ability.ability.name}-${pokemon.name}`}>
+                                        {ability.ability.name}
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
                 </div>
                 }
                 {loading && <p>Loading...</p>}

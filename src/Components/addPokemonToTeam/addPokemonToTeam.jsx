@@ -74,9 +74,9 @@ function AddPokemonToTeam({pokemonId}){
             const validationResult = teamValidation(checkedTeam);
 
             if (validationResult.fullTeam === true){
-                setMessage('Maximum number of pokemons in one team has been reached')
+                setMessage('Team is full')
             }else if(validationResult.existingPokemon === true){
-                setMessage('This pokemon is already exist in selected team')
+                setMessage('This pokemon is already exist in team')
             }else {
             await axios.post(`${noviEndPoint}pokemonTeams`, {
                     teamId: selectedTeam,
@@ -90,7 +90,7 @@ function AddPokemonToTeam({pokemonId}){
                             Authorization: `Bearer ${ token }`,
                         }}
             );
-            setMessage('Pokemon has been succesfully added to the team');
+            setMessage('Pokemon has been added to the team');
             }
         } catch(e) {
             console.error(e);
@@ -102,9 +102,10 @@ function AddPokemonToTeam({pokemonId}){
     }
 
     return  (
-        <div>
+        <div className="add-to-team">
             <form onSubmit={handleSubmit}>
                 <label htmlFor="team-id-field">
+
                     <select
                         name="teams"
                         id="teams-select"
@@ -121,16 +122,16 @@ function AddPokemonToTeam({pokemonId}){
                                     </option>
                         })}
                     </select>
+                    <button
+                        type="submit"
+                        className="btn-add-to-team"
+                        disabled={loading}
+                    >
+                        Add to team
+                    </button>
                 </label>
-                {message}
-                {error && <p>something went wrong adding pokemon to the team</p>}
-                <button
-                    type="submit"
-                    className="form-button"
-                    disabled={loading}
-                >
-                    Add to team
-                </button>
+                <p className="form-message">{message}</p>
+                {error && <p className="form-message">something went wrong adding pokemon to the team</p>}
             </form>
         </div>
     )

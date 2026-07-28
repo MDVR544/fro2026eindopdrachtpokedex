@@ -1,6 +1,6 @@
 import './infoCardPopup.css';
 import SetFavorite from "../../helpers/setFavorite/setFavorite.jsx";
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import AddPokemonToTeam from "../addPokemonToTeam/addPokemonToTeam.jsx";
 
@@ -12,24 +12,25 @@ function InfoCardPopup(props) {
     <div className="large-view">
     <article className="large-view-content">
         {props.children}
-    </article>
+
 
         <button className="btn-close" type="button" onClick={() => props.setTrigger(false)}>
             X
         </button>
         { isAuth &&
-            <div>
+            <div className="popup-actions">
             <SetFavorite
-            pokemonId={props.pokemonId}
-            favPokemon={props.isFavorite}
-            toggleIsFavorite={props.toggleIsFavorite}
+                pokemonId={props.pokemonId}
+                favPokemon={props.isFavorite}
+                toggleIsFavorite={props.toggleIsFavorite}
             />
                 <AddPokemonToTeam
+                    className="btn-add-to-team"
                     pokemonId={props.pokemonId}
-
                 />
             </div>
         }
+    </article>
     </div>
 </>
     ) : "";
