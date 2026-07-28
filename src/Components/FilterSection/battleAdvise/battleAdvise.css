@@ -8,5 +8,8 @@
 .strengths-weaknesses li{
     border-bottom: 2px solid   var(--pokémon-grey-color);
     text-transform: capitalize;
+}
+
+.close-icon{
 
 }

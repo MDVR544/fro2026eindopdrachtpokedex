@@ -2,6 +2,8 @@ import './battleAdvise.css'
 import GetType from "../../../helpers/getType/getType.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import { CgClose } from "react-icons/cg";
+import { FaCheck } from "react-icons/fa";
 import Pokeball from "../../pokeball/pokeball.jsx";
 
 function BattleAdvise({ toggleLoading,
@@ -87,7 +89,7 @@ function BattleAdvise({ toggleLoading,
                                                     strengths.map((strength)=>{
                                                         return(
                                                             <li key={strength.name}>
-                                                                {strength.name}
+                                                                <CgClose  /> {strength.name}
                                                             </li>
                                                         )
                                                     })
@@ -104,7 +106,7 @@ function BattleAdvise({ toggleLoading,
                                                 weaknesses.map((weakness)=>{
                                                     return(
                                                         <li key={weakness.name}>
-                                                            {weakness.name}
+                                                            <FaCheck /> {weakness.name}
                                                         </li>
                                                     )
                                                 })
