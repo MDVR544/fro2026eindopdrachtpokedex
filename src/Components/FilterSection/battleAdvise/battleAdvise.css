@@ -1,0 +1,12 @@
+.strengths-weaknesses{
+    display: flex;
+    justify-content: space-between;
+}
+.strengths-weaknesses ul{
+    list-style: none;
+}
+.strengths-weaknesses li{
+    border-bottom: 2px solid   var(--pokémon-grey-color);
+    text-transform: capitalize;
+
+}

@@ -1,6 +1,8 @@
+import './generationFilter.css'
 import {useEffect, useState} from "react";
 import axios from "axios";
 import GenerationConverter from "../../../helpers/generationConverter/generationConverter.jsx";
+import Pokeball from "../../pokeball/pokeball.jsx";
 
 function GenerationFilter ({ toggleLoading,
                              toggleError,
@@ -75,7 +77,7 @@ function GenerationFilter ({ toggleLoading,
         }
 
 return(
-    <div className="generation filter">
+    <div className="generation-filter">
                 <select
                     name="generation"
                     id="generation-select"
@@ -94,12 +96,11 @@ return(
                         </option>
                     })}
                 </select>
-            <button
-                type="button"
-                onClick={(e)=>fetchGenFilteredData(e)}
-            >
-                search generation
-            </button>
+        <Pokeball
+            type="button"
+            onClick={(e)=>fetchGenFilteredData(e)}>
+            search
+        </Pokeball>
     </div>
 )
 

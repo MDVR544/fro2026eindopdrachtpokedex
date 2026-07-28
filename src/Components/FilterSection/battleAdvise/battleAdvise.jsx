@@ -1,6 +1,8 @@
+import './battleAdvise.css'
 import GetType from "../../../helpers/getType/getType.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import Pokeball from "../../pokeball/pokeball.jsx";
 
 function BattleAdvise({ toggleLoading,
                         toggleError,
@@ -56,9 +58,9 @@ function BattleAdvise({ toggleLoading,
     return(
         <>
             <div className="battle-advise-section">
-                <h1>Battle Advise</h1>
+                <h2>Battle Advise</h2>
                 <div className="typeSelection">
-                    <h4>type</h4>
+                    <h4>Choose opponent type</h4>
                     {type &&
                         type.results.map((type) => {
                             return(
@@ -77,47 +79,53 @@ function BattleAdvise({ toggleLoading,
                 <div className="notification-section">
                     {typeToCounter ? (
                             <div className="strengths-weaknesses">
-                                <h3>Strengths</h3>
-                                <p>{typeToCounter} type is strong against:</p>
-                                <ul>
-                                    {strengths.length > 0 ? (
-                                            strengths.map((strength)=>{
-                                                return(
-                                                    <li key={strength.name}>
-                                                        {strength.name}
-                                                    </li>
-                                                )
-                                            })
-                                        ) :
-                                        <p>no types available</p>
-                                    }
-                                </ul>
-                                <h3>weaknesses</h3>
-                                <p>{typeToCounter} type is weak against:</p>
-                                <ul>
-                                    {weaknesses.length > 0 ? (
-                                            weaknesses.map((weakness)=>{
-                                                return(
-                                                    <li key={weakness.name}>
-                                                        {weakness.name}
-                                                    </li>
-                                                )
-                                            })
-                                        ) :
-                                        <p>no types available</p>
-                                    }
-                                </ul>
+                                <span>
+                                    <h3>Strengths</h3>
+                                {/*<p>{typeToCounter} type is strong against:</p>*/}
+                                        <ul>
+                                            {strengths.length > 0 ? (
+                                                    strengths.map((strength)=>{
+                                                        return(
+                                                            <li key={strength.name}>
+                                                                {strength.name}
+                                                            </li>
+                                                        )
+                                                    })
+                                                ) :
+                                                <p>no types available</p>
+                                            }
+                                        </ul>
+                                </span>
+                                <span>
+                                    <h3>Weaknesses</h3>
+                                    {/*<p>{typeToCounter} type is weak against:</p>*/}
+                                    <ul>
+                                        {weaknesses.length > 0 ? (
+                                                weaknesses.map((weakness)=>{
+                                                    return(
+                                                        <li key={weakness.name}>
+                                                            {weakness.name}
+                                                        </li>
+                                                    )
+                                                })
+                                            ) :
+                                            <p>no types available</p>
+                                        }
+                                    </ul>
+                                </span>
+
                             </div>
                         ) :
                         <h3>Choose a type to see its strengths and weaknesses</h3>
                     }
                 </div>
-                <button
+                <div className="btn-reset">
+                <Pokeball
                     type= 'button'
-                    onClick={()=> resetBattleAdvise()}
-                >
+                    onClick={()=> resetBattleAdvise()}>
                     reset advise
-                </button>
+                </Pokeball>
+                </div>
             </div>
         </>
     )
