@@ -12,14 +12,25 @@
 
 .large-view-content{
     position: relative;
-    padding: 32px;
     width: 100%;
     max-width: 640px;
+    max-height: 1000px;
     background-color: var(--pokémon-white-color);
+    border: 2px solid var(--pokémon-border-color);
 }
 
 .btn-close{
-    position: relative;
-    top: -15px;
-    right: 25px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    font-weight: bold
+}
+
+.popup-actions{
+    display: flex;
+    margin-top: 24px;
+    gap: 8px;
 }
