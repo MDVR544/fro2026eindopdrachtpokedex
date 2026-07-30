@@ -197,9 +197,14 @@ function MyTeams(){
 
 
     return (
-        <>
-            <h1>My Teams page</h1>
-            <form onSubmit={handleSubmit}>
+        <div className="my-teams-page-content">
+            <div className="add-team-container">
+                <p>Want to prepare for your next adventure or you want to see how your perfect team would look?
+                then start here with creating your team! click on the pokémon card to add them to your created team.</p>
+            <form
+                onSubmit={handleSubmit}
+                className="form-create-team"
+            >
                 <label htmlFor="team-name-field">
                     <input
                         type="name"
@@ -221,7 +226,7 @@ function MyTeams(){
                     Create team
                 </button>
             </form>
-
+            </div>
             <div>
                 {userTeams.map((team) => {
                     const filteredTeam = userPokemonTeams.filter((userPokemon) => {
@@ -229,7 +234,10 @@ function MyTeams(){
                     });
 
                     return (
-                        <div key={team.id}>
+                        <div
+                            key={team.id}
+                            className="team-container"
+                        >
                                 <h3>{team.name}</h3>
                             <button
                                 type="button"
@@ -244,15 +252,16 @@ function MyTeams(){
                                         <div
                                             key={pokemonTeam.id}
                                         >
-                                        <button
-                                            type="button"
-                                            onClick={()=>{deletePokemonFromTeam(team.id, pokemonTeam.pokemonId)}}
-                                            disabled={loading}
-                                        > Delete pokemon
-                                        </button>
                                         <SmallInfoCard
                                             endpoint={`${pokemonApi}/${pokemonTeam.pokemonId}`}
                                         />
+                                        <button
+                                                type="button"
+                                                onClick={()=>{deletePokemonFromTeam(team.id, pokemonTeam.pokemonId)}}
+                                                disabled={loading}
+                                        >
+                                            Delete pokemon
+                                         </button>
                                         </div>
                                     );
                                 })}
@@ -261,7 +270,7 @@ function MyTeams(){
                     );
                 })}
             </div>
-        </>
+        </div>
     );
 }
 
