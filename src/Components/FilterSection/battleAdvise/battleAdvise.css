@@ -1,15 +1,17 @@
+.battle-advise-section{
+    border-top: 2px solid grey;
+}
+
 .strengths-weaknesses{
     display: flex;
     justify-content: space-between;
 }
+
 .strengths-weaknesses ul{
     list-style: none;
 }
+
 .strengths-weaknesses li{
     border-bottom: 2px solid   var(--pokémon-grey-color);
     text-transform: capitalize;
-}
-
-.close-icon{
-
 }

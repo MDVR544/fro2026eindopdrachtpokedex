@@ -4,7 +4,6 @@
     flex-direction: column;
     max-width: 330px;
     padding: 10px 10px 0 10px;
-    /*background-color: #f3f3f3;*/
     background-color: rgba(255, 69, 69, 1) ;
 }
 
@@ -24,6 +23,7 @@
     text-transform: capitalize;
     margin: 22px 0 0 0;
 }
+
 .searchSelection button{
     font-size: 18px;
 }
@@ -32,7 +32,6 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-
 }
 .btn-reset{
     display: flex;
@@ -42,7 +41,5 @@
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-    border-top: 2px solid grey;
-
 }
 
