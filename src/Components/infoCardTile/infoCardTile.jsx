@@ -5,8 +5,10 @@ import GetType from "../../helpers/getType/getType.jsx";
 import IdFormater from "../../helpers/idFormater/idFormater.jsx";
 import InfoCardPopup from "../infoCardPopup/infoCardPopup.jsx";
 import {AuthContext} from "../../context/AuthContext.jsx";
+import Pokeball from "../pokeball/pokeball.jsx";
+import {CgClose} from "react-icons/cg";
 
-function SmallInfoCard({endpoint}){
+function SmallInfoCard({endpoint, showDeleteButton, deleteFromTeam}){
 
     const noviEndPoint = import.meta.env.VITE_NOVI_API;
     const noviProjectId = import.meta.env.VITE_NOVI_PROJECT_ID;
@@ -100,6 +102,14 @@ function SmallInfoCard({endpoint}){
                             <div className="card-header-info">
                             <h2>{pokemon.name}</h2>
                             <h3> {IdFormater(pokemon.id)} </h3>
+                                {showDeleteButton && (
+                                    <Pokeball
+                                        type="button"
+                                        className="delete-from-team-button"
+                                        onClick={deleteFromTeam}
+                                    >
+                                        <p><CgClose  /></p>
+                                    </Pokeball>)}
                             </div>
                                 <img
                                 alt="Afbeelding pokémon"

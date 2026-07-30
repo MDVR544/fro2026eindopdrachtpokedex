@@ -3,6 +3,7 @@ import {useContext, useEffect, useState} from "react";
  import axios from "axios";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import SmallInfoCard from "../../Components/infoCardTile/infoCardTile.jsx";
+import Pokeball from "../../Components/pokeball/pokeball.jsx";
 
 function MyTeams(){
     const noviEndPoint = import.meta.env.VITE_NOVI_API;
@@ -217,14 +218,14 @@ function MyTeams(){
                 </label>
                 {succesMessage && <p>Team has been added</p>}
                 {error && <p>This team already exist, please select a different team name</p>}
-
-                <button
+                <Pokeball
                     type="submit"
                     className="form-button"
                     disabled={loading}
                 >
                     Create team
-                </button>
+                </Pokeball>
+
             </form>
             </div>
             <div>
@@ -238,30 +239,31 @@ function MyTeams(){
                             key={team.id}
                             className="team-container"
                         >
-                                <h3>{team.name}</h3>
-                            <button
+                            <div className="team-container-header-content">
+                                <h1>{team.name}</h1>
+                            <Pokeball
                                 type="button"
+                                className="delete-team-button"
                                 onClick={()=>{deleteUserTeam(team.id)}}
                                 disabled={loading}
                             >
                                 Delete team
-                            </button>
+                            </Pokeball>
+                            </div>
                             <article className="pokemon-tiles">
                                 {filteredTeam.map((pokemonTeam) => {
                                     return (
                                         <div
                                             key={pokemonTeam.id}
+                                            className="pokemon-tiles-teams"
                                         >
                                         <SmallInfoCard
                                             endpoint={`${pokemonApi}/${pokemonTeam.pokemonId}`}
+                                            showDeleteButton
+                                            deleteFromTeam={() => {
+                                                deletePokemonFromTeam(team.id, pokemonTeam.pokemonId);
+                                            }}
                                         />
-                                        <button
-                                                type="button"
-                                                onClick={()=>{deletePokemonFromTeam(team.id, pokemonTeam.pokemonId)}}
-                                                disabled={loading}
-                                        >
-                                            Delete pokemon
-                                         </button>
                                         </div>
                                     );
                                 })}

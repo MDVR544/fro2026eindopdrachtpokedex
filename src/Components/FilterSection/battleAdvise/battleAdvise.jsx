@@ -83,7 +83,6 @@ function BattleAdvise({ toggleLoading,
                             <div className="strengths-weaknesses">
                                 <span>
                                     <h3>Strengths</h3>
-                                {/*<p>{typeToCounter} type is strong against:</p>*/}
                                         <ul>
                                             {strengths.length > 0 ? (
                                                     strengths.map((strength)=>{
@@ -100,7 +99,6 @@ function BattleAdvise({ toggleLoading,
                                 </span>
                                 <span>
                                     <h3>Weaknesses</h3>
-                                    {/*<p>{typeToCounter} type is weak against:</p>*/}
                                     <ul>
                                         {weaknesses.length > 0 ? (
                                                 weaknesses.map((weakness)=>{
