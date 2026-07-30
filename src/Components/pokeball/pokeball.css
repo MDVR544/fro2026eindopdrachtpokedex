@@ -1,15 +1,18 @@
 .Pokéball {
     background-color: white;
+    font-size: 18px;
     font-weight: 700;
+    text-transform: capitalize;
     height: auto;
     width: auto;
-    padding: 12px;
+    max-width: 180px;
+    padding: 6px;
     text-align: center;
     border-radius: 50%;
-    border-top:35px solid var(--pokémon-red-color);
+    border-top: 20px solid var(--pokémon-red-color);
     border-left: 0 solid transparent;
     border-right: 0 solid transparent;
-    border-bottom: 35px solid var(--pokémon-grey-color);
+    border-bottom: 20px solid var(--pokémon-grey-color);
     cursor: pointer;
     display: inline;
 }

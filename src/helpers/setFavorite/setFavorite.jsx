@@ -70,14 +70,14 @@ function SetFavorite({pokemonId, favPokemon, toggleIsFavorite}){
     }
 
     return(
-        <>
+        <div className="add-fav-content">
             <button className="btn-fav" type="button" onClick={()=> {(favorite(pokemonId))}}>
                 {favPokemon ? "Delete Favorite" : "Favorite"}
             </button>
 
-            {loading && <p>Adding pokemon to your favorites...</p>}
-            {error && <p >Something went wrong making this pokemon your favorite</p>}
-        </>
+            {loading && <p className="system-message">Adding pokemon to your favorites...</p>}
+            {error && <p className="system-message">Something went wrong making this pokemon your favorite</p>}
+        </div>
     );
 }
 

@@ -1,7 +1,45 @@
 .filter-side-bar{
-    border: red 1px solid;
+    color: var(--pokémon-white-color);
     display: flex;
     flex-direction: column;
-    width: 300px;
+    max-width: 330px;
+    padding: 10px 10px 0 10px;
+    background-color: rgba(255, 69, 69, 1) ;
+}
+
+.searchSelection{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.search-content{
+    display: flex;
     justify-content: space-between;
 }
+
+.searchSelection input{
+    font-size: 18px;
+    text-transform: capitalize;
+    margin: 22px 0 0 0;
+}
+
+.searchSelection button{
+    font-size: 18px;
+}
+
+.filter-content{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.btn-reset{
+    display: flex;
+    justify-content: center;
+}
+.battle-advise-content{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+

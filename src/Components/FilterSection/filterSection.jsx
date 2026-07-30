@@ -6,6 +6,7 @@ import GenerationFilter from "./generationFilter/generationFilter.jsx";
 import TypeFilter from "./typeFilter/typeFilter.jsx";
 import BattleAdvise from "./battleAdvise/battleAdvise.jsx";
 import axios from "axios";
+import Pokeball from "../pokeball/pokeball.jsx";
 
 function FilterSection({   name,
                            inputType,
@@ -64,8 +65,8 @@ useEffect(() => {
     <>
         <div className="filter-side-bar">
             <div className="searchSelection">
-                <h1>Search Pokémon</h1>
-                <div>
+                <h2>Search Pokémon</h2>
+                <div className="search-content">
                     <InputField
                         label={label}
                         name={name}
@@ -74,14 +75,15 @@ useEffect(() => {
                         value={value}
                         changeHandler={changeHandler}
                     />
-                    <button
-                        type='button'
-                        onClick={()=> {searchPokemon(value)}}
+                    <Pokeball
+                        type="button"
+                        onClick={() => searchPokemon(value)}
                     >
-                         search
-                    </button>
+                        Search
+                    </Pokeball>
                     </div>
-                <div>
+                </div>
+                <div  className="filter-content">
                     <TypeFilter
                         toggleLoading={toggleLoading}
                         toggleError={toggleError}
@@ -103,13 +105,15 @@ useEffect(() => {
                         setTypeFilteredPokemon={setTypeFilteredPokemon}
                         setSearchInput={changeHandler}
                     />
-                    <button
-                        type= 'button'
-                        onClick={()=> resetTypeSearch()}
-                    >
-                        reset search
-                    </button>
                 </div>
+            <div className="btn-reset">
+                <Pokeball
+                    type= 'button'
+                    onClick={()=> resetTypeSearch()}>
+                    reset search
+                </Pokeball>
+            </div>
+                <div className="battle-advise-content">
                 { isAuth &&
                     <BattleAdvise
                         toggleLoading={toggleLoading}
@@ -119,8 +123,9 @@ useEffect(() => {
                         type={type}
                     />
                 }
+                </div>
             </div>
-        </div>
+
     </>
     );
 }

@@ -55,7 +55,7 @@ function TypeFilter({ toggleLoading,
 
     return(
     <div className="typeSelection">
-        <h4>type</h4>
+        <h2>Search type</h2>
         {type &&
             type.results.map((type) => {
                 return(

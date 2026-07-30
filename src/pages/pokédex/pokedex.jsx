@@ -1,6 +1,7 @@
 import './pokedex.css' ;
 import {useEffect, useState} from "react";
 import axios from 'axios';
+import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import SmallInfoCard from "../../Components/infoCardTile/infoCardTile.jsx";
 import Button from "../../Components/normal button/normal button.jsx";
 import FilterSection from "../../Components/FilterSection/filterSection.jsx";
@@ -129,13 +130,13 @@ function resetTypeSearch(){
                             disabled={!pokemon.previous}
                             clickHandler={() => setEndpoint(pokemon.previous)}
                         >
-                            Vorige
+                            <SlArrowLeft />
                         </Button>
                         <Button
                             disabled={!pokemon.next}
                             clickHandler={() => setEndpoint(pokemon.next)}
                         >
-                            Volgende
+                            <SlArrowRight />
                         </Button>
                     </div> }
                 {loading && <p>Loading...</p>}
