@@ -1,4 +1,3 @@
-import './getType.css';
 
 
 function GetType(type){
