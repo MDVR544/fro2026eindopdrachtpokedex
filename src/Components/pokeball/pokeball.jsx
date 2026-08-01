@@ -1,10 +1,10 @@
 import './pokeball.css';
 
-function Pokeball( {children, type, onClick}){
+function Pokeball( {children, type, onClick, className}){
 
     return(
         <button
-            className="Pokéball"
+            className={"Pokéball"}
             type={type}
             onClick={onClick}
         >

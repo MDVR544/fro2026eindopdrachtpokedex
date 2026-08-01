@@ -1,0 +1,67 @@
+.my-teams-page-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    background-color: rgba(255, 69, 69, 0.3) ;
+    gap: 10px;
+}
+.form-button{
+    min-width: 200px;
+    min-height: 90px;
+}
+
+.add-team-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start ;
+    width: 800px;
+    border: 5px solid var(--pokémon-grey-color);
+    border-radius: 15px;
+    margin-top: 10px ;
+    padding: 15px;
+    gap: 10px;
+}
+
+.add-team-container p{
+ font-weight: bold;
+    font-size: 18px;
+}
+
+
+.form-create-team{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-create-team input{
+    font-size: 20px;
+    padding-left: 5px;
+}
+
+.team-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border: 5px solid var(--pokémon-grey-color);
+    border-radius: 15px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+.delete-team-button{
+    min-width: 200px;
+    min-height: 90px;
+}
+
+.team-container-header-content{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+

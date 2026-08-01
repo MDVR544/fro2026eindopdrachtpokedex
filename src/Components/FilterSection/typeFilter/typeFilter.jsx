@@ -10,7 +10,9 @@ function TypeFilter({ toggleLoading,
                       setTypeFilteredPokemon,
                       setSelectedGen,
                       type,
-                      setSearchInput})
+                      setSearchInput,
+                      setIsChecked
+                    })
 {
     const typeApi = import.meta.env.VITE_API_TYPE;
 
@@ -33,6 +35,7 @@ function TypeFilter({ toggleLoading,
                 toggleFiltersActive(true);
                 setSelectedGen('');
                 setSearchInput("");
+                setIsChecked(false);
                 setTypeFilteredPokemon(data.pokemon);
             } catch (e) {
                 if (axios.isCancel(e)) {

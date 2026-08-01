@@ -12,7 +12,9 @@ function GenerationFilter ({ toggleLoading,
                              selectedGen,
                              setSelectedGen,
                              setTypeFilteredPokemon,
-                             setSearchInput})
+                             setSearchInput,
+                             setIsChecked
+                            })
 {
     const genApi = import.meta.env.VITE_API_GEN
     const [generations, setGenerations] = useState([]);
@@ -63,6 +65,7 @@ function GenerationFilter ({ toggleLoading,
                 toggleFiltersActive(true);
                 setTypeFilteredPokemon([]);
                 setSearchInput("");
+                setIsChecked(false);
                 setSearchGeneration(data.pokemon_species);
             } catch (e) {
                 if (axios.isCancel(e)) {

@@ -3,6 +3,7 @@ import {useContext, useEffect, useState} from "react";
  import axios from "axios";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import SmallInfoCard from "../../Components/infoCardTile/infoCardTile.jsx";
+import Pokeball from "../../Components/pokeball/pokeball.jsx";
 
 function MyTeams(){
     const noviEndPoint = import.meta.env.VITE_NOVI_API;
@@ -197,9 +198,14 @@ function MyTeams(){
 
 
     return (
-        <>
-            <h1>My Teams page</h1>
-            <form onSubmit={handleSubmit}>
+        <div className="my-teams-page-content">
+            <div className="add-team-container">
+                <p>Want to prepare for your next adventure or you want to see how your perfect team would look?
+                then start here with creating your team! click on the pokémon card to add them to your created team.</p>
+            <form
+                onSubmit={handleSubmit}
+                className="form-create-team"
+            >
                 <label htmlFor="team-name-field">
                     <input
                         type="name"
@@ -212,16 +218,16 @@ function MyTeams(){
                 </label>
                 {succesMessage && <p>Team has been added</p>}
                 {error && <p>This team already exist, please select a different team name</p>}
-
-                <button
+                <Pokeball
                     type="submit"
                     className="form-button"
                     disabled={loading}
                 >
                     Create team
-                </button>
-            </form>
+                </Pokeball>
 
+            </form>
+            </div>
             <div>
                 {userTeams.map((team) => {
                     const filteredTeam = userPokemonTeams.filter((userPokemon) => {
@@ -229,29 +235,34 @@ function MyTeams(){
                     });
 
                     return (
-                        <div key={team.id}>
-                                <h3>{team.name}</h3>
-                            <button
+                        <div
+                            key={team.id}
+                            className="team-container"
+                        >
+                            <div className="team-container-header-content">
+                                <h1>{team.name}</h1>
+                            <Pokeball
                                 type="button"
+                                className="delete-team-button"
                                 onClick={()=>{deleteUserTeam(team.id)}}
                                 disabled={loading}
                             >
                                 Delete team
-                            </button>
+                            </Pokeball>
+                            </div>
                             <article className="pokemon-tiles">
                                 {filteredTeam.map((pokemonTeam) => {
                                     return (
                                         <div
                                             key={pokemonTeam.id}
+                                            className="pokemon-tiles-teams"
                                         >
-                                        <button
-                                            type="button"
-                                            onClick={()=>{deletePokemonFromTeam(team.id, pokemonTeam.pokemonId)}}
-                                            disabled={loading}
-                                        > Delete pokemon
-                                        </button>
                                         <SmallInfoCard
                                             endpoint={`${pokemonApi}/${pokemonTeam.pokemonId}`}
+                                            showDeleteButton
+                                            deleteFromTeam={() => {
+                                                deletePokemonFromTeam(team.id, pokemonTeam.pokemonId);
+                                            }}
                                         />
                                         </div>
                                     );
@@ -261,7 +272,7 @@ function MyTeams(){
                     );
                 })}
             </div>
-        </>
+        </div>
     );
 }
 

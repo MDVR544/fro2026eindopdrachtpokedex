@@ -1,0 +1,12 @@
+.toggle-favorites-wrapper{
+    display: flex;
+    font-size: 26px;
+    font-weight: bold;
+    gap: 20px;
+    margin: 10px;
+}
+.toggle-favorites-checkbox {
+    width: 24px;
+    height: 24px;
+    margin: 8px;
+}
