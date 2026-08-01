@@ -16,6 +16,8 @@ function Pokedex(){
     const [typeFilteredPokemon, setTypeFilteredPokemon] = useState ([]);
     const [searchGeneration, setSearchGeneration] = useState([]);
     const [selectedGen, setSelectedGen] = useState('');
+    const [favoritePokemon, setFavoritePokemon] = useState([]);
+    const [isChecked, setIsChecked] = useState(false)
     const [endpoint, setEndpoint] = useState(pokemonApi);
     const [loading, toggleLoading] = useState(false);
     const [error, toggleError] = useState(false);
@@ -61,6 +63,7 @@ function Pokedex(){
             toggleFiltersActive(true);
             console.log(data)
             setSearchResult(data);
+            setIsChecked(false);
         } catch (e) {
             if (axios.isCancel(e)) {
                 console.error('Request is canceled...');
@@ -80,6 +83,7 @@ function resetTypeSearch(){
     setSearchInput("");
     setSearchGeneration([]);
     setSelectedGen('');
+    setFavoritePokemon([])
 }
 
     return (
@@ -91,6 +95,7 @@ function resetTypeSearch(){
                 placeholder='pokemon name'
                 value= {searchInput}
                 toggleLoading={toggleLoading}
+                loading={loading}
                 toggleError={toggleError}
                 changeHandler= {setSearchInput}
                 searchPokemon={searchPokemon}
@@ -101,9 +106,13 @@ function resetTypeSearch(){
                 selectedGen={selectedGen}
                 setSelectedGen={setSelectedGen}
                 setTypeFilteredPokemon={setTypeFilteredPokemon}
+                setFavoritePokemon={setFavoritePokemon}
+                setIsChecked={setIsChecked}
+                isChecked={isChecked}
             />
             <div className="info-content">
                 <section>
+                    {loading && <p>Loading...</p>}
                     {Object.keys(pokemon).length > 0 &&
                     <article className="pokemon-tiles">
                         {searchResult ? (
@@ -117,6 +126,11 @@ function resetTypeSearch(){
                                 searchGeneration.length > 0 ? (
                                         searchGeneration.map((pokemon) => {
                                             return <SmallInfoCard key={pokemon.name} endpoint={`${pokemonApi}${pokemon.name}`}/>
+                                        })
+                                    ) :
+                                    favoritePokemon.length > 0 ? (
+                                    favoritePokemon.map((favoritePokemon) => {
+                                        return <SmallInfoCard key={favoritePokemon.id} endpoint={`${pokemonApi}/${favoritePokemon.pokemonId}`}/>
                                         })
                                     ) :
                                 pokemon.results.map((pokemon) => {
@@ -139,7 +153,6 @@ function resetTypeSearch(){
                             <SlArrowRight />
                         </Button>
                     </div> }
-                {loading && <p>Loading...</p>}
                 {pokemon.length === 0 && error && <p>Er ging iets mis bij het zoeken van deze Pokémon...</p>}
                 </section>
             </div>

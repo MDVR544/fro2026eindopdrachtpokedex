@@ -1,7 +1,7 @@
 import './App.css'
 import {Routes, Route, Navigate} from "react-router-dom";
 import Account from "./pages/account/account.jsx";
-import Favorites from "./pages/favorites/favorites.jsx";
+import Favorites from "./Components/FilterSection/favorites/favorites.jsx";
 import MyTeams from "./pages/myTeams/myTeams.jsx";
 import Pokedex from "./pages/pokédex/pokedex.jsx";
 import NotFound from "./pages/notFound/notFound.jsx";
@@ -27,7 +27,6 @@ function App() {
                     <Route path="signin" element={<SignIn />} />
                     <Route path="signup" element={<SignUP />} />
                     <Route path="account" element={isAuth ? <Account /> : <Navigate to="/signin" />} />
-                    <Route path="favorites" element={isAuth ? <Favorites /> : <Navigate to="/signin"/>} />
                     <Route path="myteams" element={isAuth ? <MyTeams /> : <Navigate to="/signin"/>} />
                 </Routes>
             <Footer />

@@ -16,7 +16,6 @@ function NavBar(){
                             <ul className="navBar-list-logged-in">
                             <li><NavLink to="/" className="">Pokédex</NavLink></li>
                             <li><NavLink to="myteams" className="">My Teams</NavLink></li>
-                            <li><NavLink to="favorites" className="">Favorites</NavLink></li>
                             <li><NavLink to="account" className="">Account</NavLink></li>
                             </ul>
                             <button type="button" onClick={logout}>Logout</button>

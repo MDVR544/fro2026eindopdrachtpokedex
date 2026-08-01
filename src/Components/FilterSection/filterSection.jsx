@@ -7,13 +7,15 @@ import TypeFilter from "./typeFilter/typeFilter.jsx";
 import BattleAdvise from "./battleAdvise/battleAdvise.jsx";
 import axios from "axios";
 import Pokeball from "../pokeball/pokeball.jsx";
+import Favorites from "./favorites/favorites.jsx";
 
 function FilterSection({   name,
                            inputType,
                            label,
                            value,
                            toggleLoading,
-                            toggleError,
+                           loading,
+                           toggleError,
                            changeHandler,
                            placeholder,
                            searchPokemon,
@@ -23,7 +25,10 @@ function FilterSection({   name,
                            setSearchGeneration,
                            selectedGen,
                            setSelectedGen,
-                           setTypeFilteredPokemon
+                           setTypeFilteredPokemon,
+                           setFavoritePokemon,
+                           setIsChecked,
+                           isChecked
                        })
 {
     const { isAuth } = useContext(AuthContext);
@@ -93,6 +98,7 @@ useEffect(() => {
                         setSelectedGen={setSelectedGen}
                         type={type}
                         setSearchInput={changeHandler}
+                        setIsChecked={setIsChecked}
                     />
                     <GenerationFilter
                         toggleLoading={toggleLoading}
@@ -104,6 +110,7 @@ useEffect(() => {
                         setSelectedGen={setSelectedGen}
                         setTypeFilteredPokemon={setTypeFilteredPokemon}
                         setSearchInput={changeHandler}
+                        setIsChecked={setIsChecked}
                     />
                 </div>
             <div className="btn-reset">
@@ -113,8 +120,25 @@ useEffect(() => {
                     reset search
                 </Pokeball>
             </div>
-                <div className="battle-advise-content">
+                <div className="auth-content">
                 { isAuth &&
+                    <>
+                    <Favorites
+                        toggleLoading={toggleLoading}
+                        toggleError={toggleError}
+                        setFavoritePokemon={setFavoritePokemon}
+                        resetTypeSearch={resetTypeSearch}
+                        toggleFiltersActive={toggleFiltersActive}
+                        loading={loading}
+                        setIsChecked={setIsChecked}
+                        isChecked={isChecked}
+                        setSearchResult={setSearchResult}
+                        setSearchGeneration={setSearchGeneration}
+                        setSelectedGen={setSelectedGen}
+                        setTypeFilteredPokemon={setTypeFilteredPokemon}
+                        setSearchInput={changeHandler}
+                    />
+
                     <BattleAdvise
                         toggleLoading={toggleLoading}
                         toggleError={toggleError}
@@ -122,6 +146,7 @@ useEffect(() => {
                         toggleFiltersActive={toggleFiltersActive}
                         type={type}
                     />
+                    </>
                 }
                 </div>
             </div>

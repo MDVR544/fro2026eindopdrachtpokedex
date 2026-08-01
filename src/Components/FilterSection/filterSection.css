@@ -37,9 +37,11 @@
     display: flex;
     justify-content: center;
 }
-.battle-advise-content{
+.auth-content{
     display: flex;
     flex-direction: column;
     margin-top: 10px;
+    gap: 15px;
+    border-top: 2px solid grey;
 }
 
