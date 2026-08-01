@@ -5,6 +5,7 @@ import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import SmallInfoCard from "../../Components/infoCardTile/infoCardTile.jsx";
 import Button from "../../Components/normal button/normal button.jsx";
 import FilterSection from "../../Components/FilterSection/filterSection.jsx";
+import LoadingPopup from "../../Components/loadingPopup/loadingPopup.jsx";
 
 function Pokedex(){
     const pokemonApi = import.meta.env.VITE_API_POKEMON;
@@ -113,7 +114,6 @@ function resetTypeSearch(){
             />
             <div className="info-content">
                 <section>
-                    {loading && <p>Loading...</p>}
                     {Object.keys(pokemon).length > 0 &&
                     <article className="pokemon-tiles">
                         {searchResult ? (
@@ -154,7 +154,8 @@ function resetTypeSearch(){
                             <SlArrowRight />
                         </Button>
                     </div> }
-                {pokemon.length === 0 && error && <p>Er ging iets mis bij het zoeken van deze Pokémon...</p>}
+                    {loading && <LoadingPopup />}
+                    {pokemon.length === 0 && error && <p>Er ging iets mis bij het zoeken van deze Pokémon...</p>}
                 </section>
             </div>
         </div>
