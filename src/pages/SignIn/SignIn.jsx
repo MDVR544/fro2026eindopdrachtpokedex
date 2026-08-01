@@ -3,6 +3,8 @@ import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '/src/context/AuthContext.jsx';
 import axios from 'axios';
+import pokemonBackground from "../../assets/PokemonBackground.jpg";
+import Pokeball from "../../Components/pokeball/pokeball.jsx";
 
 function SignIn(){
     const noviEndPoint = import.meta.env.VITE_NOVI_API;
@@ -42,42 +44,51 @@ function SignIn(){
 
     return (
         <>
-            <h1>Inloggen</h1>
+            <img className="background"
+                 src={pokemonBackground}
+                 alt="PokemonBackground"
+            />
+            <div className="signIn-content-wrapper">
+                <div className="signIn-content">
+                    <h1>Inloggen</h1>
 
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="email-field">
-                    e-mailadres:
-                    <input
-                        type="email"
-                        id="email-field"
-                        name="e-mail"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </label>
+                    <form className="signUp-form"
+                          onSubmit={handleSubmit}>
+                            <div className="form-input">
+                                <label htmlFor="email-field">e-mailadres:</label>
+                                    <input
+                                        type="email"
+                                        id="email-field"
+                                        name="e-mail"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
 
-                <label htmlFor="password-field">
-                    Wachtwoord:
-                    <input
-                        type="password"
-                        id="password-field"
-                        name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </label>
-                {error && <p className="error">Combinatie van e-mailadres en wachtwoord is onjuist</p>}
+                                <label htmlFor="password-field">Wachtwoord:</label>
 
-                <button
-                    type="submit"
-                    className="form-button"
-                    disabled={loading}
-                >
-                    Inloggen
-                </button>
-            </form>
+                                    <input
+                                        type="password"
+                                        id="password-field"
+                                        name="password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                    />
+                            </div>
 
-            <p>No account yet? please sign up <Link to="/signup">here</Link>.</p>
+                    {error && <p className="error">Combinatie van e-mailadres en wachtwoord is onjuist</p>}
+
+                        <Pokeball
+                            type="submit"
+                            className="form-button"
+                            disabled={loading}
+                        >
+                            Inloggen
+                        </Pokeball>
+                    </form>
+
+                    <p>No account yet? please sign up <Link to="/signup">here</Link>.</p>
+                </div>
+            </div>
         </>
     );
 }
