@@ -9,7 +9,7 @@ function Account(){
     const { user } = useContext(AuthContext);
 
     return (
-        <>
+        <div className="account-page">
             <h1>Profielpagina</h1>
             <section>
                 <h2>Gegevens</h2>
@@ -17,7 +17,7 @@ function Account(){
             </section>
 
             <p>Terug naar de <Link to="/">Homepagina</Link></p>
-        </>
+        </div>
     );
 }
 

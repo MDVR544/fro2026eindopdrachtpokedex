@@ -4,7 +4,7 @@
     align-items: center;
     /*background: linear-gradient(100deg,rgba(255, 204, 3, 1) 16%, rgba(53, 106, 188, 1) 100%);*/
     background-color: rgba(255, 69, 69, 1) ;
-
+    z-index: 5;
 }
 
 .navBar-view-logged-in {
@@ -12,7 +12,7 @@
     flex-direction: row;
     justify-content: space-evenly;
     flex-basis: 600px;
-    height: 60px;
+    height: 50px;
 }
 
 .navBar-list-logged-in{

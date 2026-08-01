@@ -2,6 +2,8 @@ import './SignUp.css';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import pokemonBackground from '../../assets/PokemonBackground.jpg';
+import Pokeball from "../../Components/pokeball/pokeball.jsx";
 
 function SignUP(){
     const noviEndPoint = import.meta.env.VITE_NOVI_API;
@@ -45,43 +47,50 @@ function SignUP(){
 
     return (
         <>
-            <h1>Registreren</h1>
+            <img className="background"
+                 src={pokemonBackground}
+                 alt="PokemonBackground"
+            />
+            <div className="signUp-content-wrapper">
+                <div className="signUp-content">
+                    <h1>Registreren</h1>
 
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="email-field">
-                    E-mailadres:
-                    <input
-                        type="email"
-                        id="email-field"
-                        name="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </label>
+                    <form className="signUp-form"
+                        onSubmit={handleSubmit}>
+                        <div className="form-input">
+                            <label htmlFor="email-field">E-mailadres:</label>
+                                <input
+                                    type="email"
+                                    id="email-field"
+                                    name="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
 
-                <label htmlFor="password-field">
-                    Wachtwoord:
-                    <input
-                        type="password"
-                        id="password-field"
-                        name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </label>
+                            <label htmlFor="password-field">Wachtwoord:</label>
+                                <input
+                                    type="password"
+                                    id="password-field"
+                                    name="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+                        </div>
 
-                {error && <p>This account already exist, please select a different e-mailadres</p>}
+                        {error && <p>This account already exist, please select a different e-mailadres</p>}
 
-                <button
-                    type="submit"
-                    className="form-button"
-                    disabled={loading}
-                >
-                    Registreren
-                </button>
-            </form>
+                        <Pokeball
+                            type="submit"
+                            className="form-button"
+                            disabled={loading}
+                        >
+                            Registreren
+                        </Pokeball>
+                    </form>
 
-            <p>Already have an account? please sign in <Link to="/signin">here</Link>.</p>
+                    <p>Already have an account? please sign in <Link to="/signin">here</Link>.</p>
+                </div>
+            </div>
         </>
     );
 }
