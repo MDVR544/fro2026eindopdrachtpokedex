@@ -1,5 +1,5 @@
 import './favorites.css'
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import axios from "axios";
 import {AuthContext} from "../../../context/AuthContext.jsx";
 
@@ -17,10 +17,9 @@ function Favorites({   toggleError,
                        setTypeFilteredPokemon,
                        setSearchInput
                    }){
+
     const noviEndPoint = import.meta.env.VITE_NOVI_API;
     const noviProjectId = import.meta.env.VITE_NOVI_PROJECT_ID;
-
-    // const [isChecked, setIsChecked] = useState(false)
 
     const { user  } = useContext(AuthContext);
     const token = localStorage.getItem('token');

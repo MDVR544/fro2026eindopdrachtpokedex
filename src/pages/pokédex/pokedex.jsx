@@ -83,7 +83,8 @@ function resetTypeSearch(){
     setSearchInput("");
     setSearchGeneration([]);
     setSelectedGen('');
-    setFavoritePokemon([])
+    setFavoritePokemon([]);
+    setIsChecked(false);
 }
 
     return (

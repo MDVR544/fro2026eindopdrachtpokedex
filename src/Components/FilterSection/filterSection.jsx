@@ -112,6 +112,23 @@ useEffect(() => {
                         setSearchInput={changeHandler}
                         setIsChecked={setIsChecked}
                     />
+                    { isAuth &&
+                        <Favorites
+                            toggleLoading={toggleLoading}
+                            toggleError={toggleError}
+                            setFavoritePokemon={setFavoritePokemon}
+                            resetTypeSearch={resetTypeSearch}
+                            toggleFiltersActive={toggleFiltersActive}
+                            loading={loading}
+                            setIsChecked={setIsChecked}
+                            isChecked={isChecked}
+                            setSearchResult={setSearchResult}
+                            setSearchGeneration={setSearchGeneration}
+                            setSelectedGen={setSelectedGen}
+                            setTypeFilteredPokemon={setTypeFilteredPokemon}
+                            setSearchInput={changeHandler}
+                        />
+                    }
                 </div>
             <div className="btn-reset">
                 <Pokeball
@@ -122,23 +139,6 @@ useEffect(() => {
             </div>
                 <div className="auth-content">
                 { isAuth &&
-                    <>
-                    <Favorites
-                        toggleLoading={toggleLoading}
-                        toggleError={toggleError}
-                        setFavoritePokemon={setFavoritePokemon}
-                        resetTypeSearch={resetTypeSearch}
-                        toggleFiltersActive={toggleFiltersActive}
-                        loading={loading}
-                        setIsChecked={setIsChecked}
-                        isChecked={isChecked}
-                        setSearchResult={setSearchResult}
-                        setSearchGeneration={setSearchGeneration}
-                        setSelectedGen={setSelectedGen}
-                        setTypeFilteredPokemon={setTypeFilteredPokemon}
-                        setSearchInput={changeHandler}
-                    />
-
                     <BattleAdvise
                         toggleLoading={toggleLoading}
                         toggleError={toggleError}
@@ -146,7 +146,6 @@ useEffect(() => {
                         toggleFiltersActive={toggleFiltersActive}
                         type={type}
                     />
-                    </>
                 }
                 </div>
             </div>
