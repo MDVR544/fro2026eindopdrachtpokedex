@@ -1,0 +1,44 @@
+.loading-screen{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.loading-content{
+    font-size: 26px;
+    background-color: var(--pokémon-white-color);
+    width: 400px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 8px solid var(--pokémon-grey-color);
+    border-radius: 10px;
+}
+
+.spinningPokeball{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border-top: 30px solid var(--pokémon-red-color);
+    border-left: 0 solid transparent;
+    border-right: 0 solid transparent;
+    border-bottom: 30px solid var(--pokémon-grey-color);
+    animation: rotating 1s linear infinite;
+}
+
+@keyframes rotating {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
