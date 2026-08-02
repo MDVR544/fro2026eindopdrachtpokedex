@@ -142,8 +142,6 @@ useEffect(() => {
                     <BattleAdvise
                         toggleLoading={toggleLoading}
                         toggleError={toggleError}
-                        setSearchResult={setSearchResult}
-                        toggleFiltersActive={toggleFiltersActive}
                         type={type}
                     />
                 }

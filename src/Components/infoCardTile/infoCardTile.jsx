@@ -140,7 +140,7 @@ function SmallInfoCard({endpoint, showDeleteButton, deleteFromTeam}){
             >
                 {Object.keys(pokemon).length > 0 &&
                 <div className="pokemon-large-card-content">
-                    <div className="top-card-content">
+                    <div className={isFavorite ? "fav-top-card-content" : "top-card-content"}>
                     <div className="large-card-header-info">
                         <h2>{pokemon.name}</h2>
                         <h3> {IdFormater(pokemon.id)} </h3>

@@ -8,9 +8,8 @@ import Pokeball from "../../pokeball/pokeball.jsx";
 
 function BattleAdvise({ toggleLoading,
                         toggleError,
-                        setSearchResult,
-                        toggleFiltersActive,
-                        type})
+                        type
+})
 {
     const typeApi = import.meta.env.VITE_API_TYPE;
 
@@ -31,8 +30,6 @@ function BattleAdvise({ toggleLoading,
             try {
                 const {data} = await axios.get(`${typeApi}${typeToCounter}`, {
                 });
-                setSearchResult(null);
-                toggleFiltersActive(true);
                 setStrengths(data.damage_relations.double_damage_to)
                 setWeaknesses(data.damage_relations.double_damage_from);
             } catch (e) {

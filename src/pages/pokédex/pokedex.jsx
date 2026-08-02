@@ -62,9 +62,9 @@ function Pokedex(){
             const {data} = await axios.get(`${pokemonApi}${searchInput}`, {
             });
             toggleFiltersActive(true);
-            console.log(data)
             setSearchResult(data);
             setIsChecked(false);
+
         } catch (e) {
             if (axios.isCancel(e)) {
                 console.error('Request is canceled...');
@@ -113,6 +113,7 @@ function resetTypeSearch(){
                 isChecked={isChecked}
             />
             <div className="info-content">
+                {pokemon.length === 0 || error && <p>Pokémon data niet gevonden</p>}
                 <section>
                     {Object.keys(pokemon).length > 0 &&
                     <article className="pokemon-tiles">
@@ -155,7 +156,6 @@ function resetTypeSearch(){
                         </Button>
                     </div> }
                     {loading && <LoadingPopup />}
-                    {pokemon.length === 0 && error && <p>Er ging iets mis bij het zoeken van deze Pokémon...</p>}
                 </section>
             </div>
         </div>

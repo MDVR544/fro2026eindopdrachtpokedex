@@ -4,7 +4,6 @@ import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import teamValidation from "../../helpers/teamValidation/teamValidation.jsx";
 
-
 function AddPokemonToTeam({pokemonId}){
     const noviEndPoint = import.meta.env.VITE_NOVI_API;
     const noviProjectId = import.meta.env.VITE_NOVI_PROJECT_ID;
@@ -56,6 +55,12 @@ function AddPokemonToTeam({pokemonId}){
         toggleError(false);
         toggleLoading(true);
 
+        if (selectedTeam === 0) {
+            toggleError(true)
+            toggleLoading(false);
+            setMessage('please select a team')
+            return;
+        }
         try {
             const {data} = await axios.get(`${noviEndPoint}users/${user.id}/pokemonTeams` ,
                 {
@@ -70,6 +75,7 @@ function AddPokemonToTeam({pokemonId}){
                 pokemonId,
                 selectedTeam
             };
+
 
             const validationResult = teamValidation(checkedTeam);
 
@@ -131,7 +137,6 @@ function AddPokemonToTeam({pokemonId}){
                     </button>
                 </label>
                 <p className="form-message">{message}</p>
-                {error && <p className="form-message">something went wrong adding pokemon to the team</p>}
             </form>
         </div>
     )
