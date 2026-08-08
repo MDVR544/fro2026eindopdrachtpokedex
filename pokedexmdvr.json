@@ -133,5 +133,113 @@
     }
   ],
   "data": {
+    "favorites": [
+      {
+        "id": 1,
+        "userId": 1,
+        "pokemonId": 6
+      },
+      {
+        "id": 1,
+        "userId": 1,
+        "pokemonId": 19
+      },
+      {
+        "id": 2,
+        "userId": 1,
+        "pokemonId": 54
+      },
+      {
+        "id": 3,
+        "userId": 1,
+        "pokemonId": 59
+      },
+      {
+        "id": 4,
+        "userId": 1,
+        "pokemonId": 57
+      },
+      {
+        "id": 5,
+        "userId": 1,
+        "pokemonId": 94
+      }
+    ],
+
+    "teams": [
+      {
+        "id": 1,
+        "name": "Kanto team",
+        "userId": 1
+      },
+      {
+        "id": 2,
+        "name": "Ice team",
+        "userId": 1
+      }
+    ],
+
+    "pokemonTeams": [
+      {
+      "id": 1,
+      "teamId": 1,
+      "pokemonId": 59,
+      "userId": 1
+      },
+      {
+        "id": 2,
+        "teamId": 1,
+        "pokemonId": 31,
+        "userId": 1
+      },
+      {
+        "id": 3,
+        "teamId": 1,
+        "pokemonId": 65,
+        "userId": 1
+      },
+      {
+        "id": 4,
+        "teamId": 1,
+        "pokemonId": 130,
+        "userId": 1
+      },
+      {
+        "id": 5,
+        "teamId": 1,
+        "pokemonId": 143,
+        "userId": 1
+      },
+      {
+        "id": 6,
+        "teamId": 1,
+        "pokemonId": 76,
+        "userId": 1
+      },
+      {
+        "id": 7,
+        "teamId": 2,
+        "pokemonId": 91,
+        "userId": 1
+      },
+      {
+        "id": 8,
+        "teamId": 2,
+        "pokemonId": 131,
+        "userId": 1
+      },
+      {
+        "id": 9,
+        "teamId": 2,
+        "pokemonId": 614,
+        "userId": 1
+      },
+      {
+        "id": 10,
+        "teamId": 2,
+        "pokemonId": 365,
+        "userId": 1
+      }
+    ]
   }
 }

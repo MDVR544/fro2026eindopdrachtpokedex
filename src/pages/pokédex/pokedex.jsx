@@ -1,4 +1,4 @@
-import './pokedex.css' ;
+import './pokedex.css';
 import {useEffect, useState} from "react";
 import axios from 'axios';
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
@@ -13,12 +13,12 @@ function Pokedex(){
     const [pokemon, setPokemons] = useState({});
     const [filtersActive, toggleFiltersActive] = useState (false);
     const [searchInput, setSearchInput] = useState ("");
-    const [searchResult, setSearchResult] = useState(null)
+    const [searchResult, setSearchResult] = useState(null);
     const [typeFilteredPokemon, setTypeFilteredPokemon] = useState ([]);
     const [searchGeneration, setSearchGeneration] = useState([]);
     const [selectedGen, setSelectedGen] = useState('');
     const [favoritePokemon, setFavoritePokemon] = useState([]);
-    const [isChecked, setIsChecked] = useState(false)
+    const [isChecked, setIsChecked] = useState(false);
     const [endpoint, setEndpoint] = useState(pokemonApi);
     const [loading, toggleLoading] = useState(false);
     const [error, toggleError] = useState(false);
@@ -62,9 +62,9 @@ function Pokedex(){
             const {data} = await axios.get(`${pokemonApi}${searchInput}`, {
             });
             toggleFiltersActive(true);
-            console.log(data)
             setSearchResult(data);
             setIsChecked(false);
+
         } catch (e) {
             if (axios.isCancel(e)) {
                 console.error('Request is canceled...');
@@ -94,7 +94,7 @@ function resetTypeSearch(){
                 name= 'search-pokemon'
                 label='search-name'
                 inputType= 'text'
-                placeholder='pokemon name'
+                placeholder='pokémon name'
                 value= {searchInput}
                 toggleLoading={toggleLoading}
                 loading={loading}
@@ -113,6 +113,7 @@ function resetTypeSearch(){
                 isChecked={isChecked}
             />
             <div className="info-content">
+                {pokemon.length === 0 || error && <p>Pokémon data niet gevonden</p>}
                 <section>
                     {Object.keys(pokemon).length > 0 &&
                     <article className="pokemon-tiles">
@@ -141,21 +142,21 @@ function resetTypeSearch(){
                 }
                     {filtersActive === false &&
                         <div className="navigation-buttons">
-                        <Button
-                            disabled={!pokemon.previous}
-                            clickHandler={() => setEndpoint(pokemon.previous)}
-                        >
-                            <SlArrowLeft />
-                        </Button>
-                        <Button
-                            disabled={!pokemon.next}
-                            clickHandler={() => setEndpoint(pokemon.next)}
-                        >
-                            <SlArrowRight />
-                        </Button>
-                    </div> }
+                            <Button
+                                disabled={!pokemon.previous}
+                                clickHandler={() => setEndpoint(pokemon.previous)}
+                            >
+                                <SlArrowLeft />
+                            </Button>
+                            <Button
+                                disabled={!pokemon.next}
+                                clickHandler={() => setEndpoint(pokemon.next)}
+                            >
+                                <SlArrowRight />
+                            </Button>
+                        </div>
+                    }
                     {loading && <LoadingPopup />}
-                    {pokemon.length === 0 && error && <p>Er ging iets mis bij het zoeken van deze Pokémon...</p>}
                 </section>
             </div>
         </div>

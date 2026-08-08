@@ -1,4 +1,4 @@
-import './myTeams.css' ;
+import './myTeams.css';
 import {useContext, useEffect, useState} from "react";
  import axios from "axios";
 import {AuthContext} from "../../context/AuthContext.jsx";
@@ -14,7 +14,8 @@ function MyTeams(){
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
     const [succesMessage, toggleSuccesMessage] = useState(false);
-    const [teamName, setTeamName] = useState('')
+    const [message, setMessage] = useState("");
+    const [teamName, setTeamName] = useState('');
     const [userTeams, setUserTeams] = useState([]);
     const [userPokemonTeams, setUserPokemonTeams] = useState([]);
 
@@ -38,14 +39,18 @@ function MyTeams(){
                             Authorization: `Bearer ${ token }`,
                         }}
             );
+
             toggleSuccesMessage(true);
+            setMessage("Team has been added");
             setUserTeams([...userTeams, newTeam.data]);
+
 
         } catch(e) {
             console.error(e);
             toggleError(true);
+            setMessage("Please add a team name")
         }
-        finally{
+        finally {
             toggleLoading(false);
         }
     }
@@ -66,14 +71,13 @@ function MyTeams(){
                             Authorization: `Bearer ${ token }`,
                         }
                 });
-            setUserTeams(data)
+            setUserTeams(data);
 
         } catch(e) {
             console.error(e);
             toggleError(true);
 
-        }
-        finally{
+        } finally {
             toggleLoading(false);
         }
     }
@@ -91,7 +95,7 @@ function MyTeams(){
             toggleLoading(true);
 
             try {
-                const {data} = await axios.get(`${noviEndPoint}users/${user.id}/pokemonTeams` ,
+                const {data} = await axios.get(`${noviEndPoint}users/${user.id}/pokemonTeams`,
                     {
                         headers:
                             {
@@ -99,14 +103,13 @@ function MyTeams(){
                                 Authorization: `Bearer ${ token }`,
                             }
                     });
-                setUserPokemonTeams(data)
+                setUserPokemonTeams(data);
 
             } catch(e) {
                 console.error(e);
                 toggleError(true);
 
-            }
-            finally{
+            } finally {
                 toggleLoading(false);
             }
         }
@@ -149,12 +152,14 @@ function MyTeams(){
                     },
                 }
             );
+
             setUserPokemonTeams(userPokemonTeams.filter((pokemonTeam) => {
-                    return Number(pokemonTeam.teamId) !== Number(teamId)
+                    return Number(pokemonTeam.teamId) !== Number(teamId);
                     })
                 );
 
             setUserTeams(userTeams.filter((team) => team.id !== teamId));
+
         } catch (e) {
             console.error(e);
             toggleError(true);
@@ -202,45 +207,43 @@ function MyTeams(){
             <div className="add-team-container">
                 <p>Want to prepare for your next adventure or you want to see how your perfect team would look?
                 then start here with creating your team! click on the pokémon card to add them to your created team.</p>
-            <form
-                onSubmit={handleSubmit}
-                className="form-create-team"
-            >
-                <label htmlFor="team-name-field">
-                    <input
-                        type="name"
-                        id="team-name-field"
-                        name="teamName"
-                        placeholder="add team name"
-                        value={teamName}
-                        onChange={(e) => setTeamName(e.target.value)}
-                    />
-                </label>
-                {succesMessage && <p>Team has been added</p>}
-                {error && <p>This team already exist, please select a different team name</p>}
-                <Pokeball
-                    type="submit"
-                    className="form-button"
-                    disabled={loading}
+                <form
+                    onSubmit={handleSubmit}
+                    className="form-create-team"
                 >
-                    Create team
-                </Pokeball>
-
-            </form>
+                    <label htmlFor="team-name-field">
+                        <input
+                            type="name"
+                            id="team-name-field"
+                            name="teamName"
+                            placeholder="add team name"
+                            value={teamName}
+                            onChange={(e) => setTeamName(e.target.value)}
+                        />
+                    </label>
+                    {succesMessage && <p>{message}</p>}
+                    {error && <p>{message}</p>}
+                    <Pokeball
+                        type="submit"
+                        className="form-button"
+                        disabled={loading}
+                    >
+                        Create team
+                    </Pokeball>
+                </form>
             </div>
-            <div>
-                {userTeams.map((team) => {
-                    const filteredTeam = userPokemonTeams.filter((userPokemon) => {
-                        return Number(userPokemon.teamId) === team.id;
-                    });
-
-                    return (
-                        <div
-                            key={team.id}
-                            className="team-container"
-                        >
-                            <div className="team-container-header-content">
-                                <h1>{team.name}</h1>
+        <div>
+            {userTeams.map((team) => {
+                const filteredTeam = userPokemonTeams.filter((userPokemon) => {
+                    return Number(userPokemon.teamId) === team.id;
+                });
+                return (
+                    <div
+                        key={team.id}
+                        className="team-container"
+                    >
+                        <div className="team-container-header-content">
+                            <h1>{team.name}</h1>
                             <Pokeball
                                 type="button"
                                 className="delete-team-button"

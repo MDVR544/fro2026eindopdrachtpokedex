@@ -87,69 +87,66 @@ useEffect(() => {
                         Search
                     </Pokeball>
                     </div>
-                </div>
-                <div  className="filter-content">
-                    <TypeFilter
+            </div>
+            <div  className="filter-content">
+                <TypeFilter
+                    toggleLoading={toggleLoading}
+                    toggleError={toggleError}
+                    setSearchResult={setSearchResult}
+                    toggleFiltersActive={toggleFiltersActive}
+                    setTypeFilteredPokemon={setTypeFilteredPokemon}
+                    setSelectedGen={setSelectedGen}
+                    type={type}
+                    setSearchInput={changeHandler}
+                    setIsChecked={setIsChecked}
+                />
+                <GenerationFilter
+                    toggleLoading={toggleLoading}
+                    toggleError={toggleError}
+                    setSearchResult={setSearchResult}
+                    toggleFiltersActive={toggleFiltersActive}
+                    setSearchGeneration={setSearchGeneration}
+                    selectedGen={selectedGen}
+                    setSelectedGen={setSelectedGen}
+                    setTypeFilteredPokemon={setTypeFilteredPokemon}
+                    setSearchInput={changeHandler}
+                    setIsChecked={setIsChecked}
+                />
+                { isAuth &&
+                    <Favorites
                         toggleLoading={toggleLoading}
                         toggleError={toggleError}
-                        setSearchResult={setSearchResult}
+                        setFavoritePokemon={setFavoritePokemon}
+                        resetTypeSearch={resetTypeSearch}
                         toggleFiltersActive={toggleFiltersActive}
-                        setTypeFilteredPokemon={setTypeFilteredPokemon}
-                        setSelectedGen={setSelectedGen}
-                        type={type}
-                        setSearchInput={changeHandler}
+                        loading={loading}
                         setIsChecked={setIsChecked}
-                    />
-                    <GenerationFilter
-                        toggleLoading={toggleLoading}
-                        toggleError={toggleError}
+                        isChecked={isChecked}
                         setSearchResult={setSearchResult}
-                        toggleFiltersActive={toggleFiltersActive}
                         setSearchGeneration={setSearchGeneration}
-                        selectedGen={selectedGen}
                         setSelectedGen={setSelectedGen}
                         setTypeFilteredPokemon={setTypeFilteredPokemon}
                         setSearchInput={changeHandler}
-                        setIsChecked={setIsChecked}
                     />
+                }
+            </div>
+                <div className="btn-reset">
+                    <Pokeball
+                        type= 'button'
+                        onClick={()=> resetTypeSearch()}>
+                        reset search
+                    </Pokeball>
+                </div>
+                <div className="auth-content">
                     { isAuth &&
-                        <Favorites
+                        <BattleAdvise
                             toggleLoading={toggleLoading}
                             toggleError={toggleError}
-                            setFavoritePokemon={setFavoritePokemon}
-                            resetTypeSearch={resetTypeSearch}
-                            toggleFiltersActive={toggleFiltersActive}
-                            loading={loading}
-                            setIsChecked={setIsChecked}
-                            isChecked={isChecked}
-                            setSearchResult={setSearchResult}
-                            setSearchGeneration={setSearchGeneration}
-                            setSelectedGen={setSelectedGen}
-                            setTypeFilteredPokemon={setTypeFilteredPokemon}
-                            setSearchInput={changeHandler}
+                            type={type}
                         />
                     }
                 </div>
-            <div className="btn-reset">
-                <Pokeball
-                    type= 'button'
-                    onClick={()=> resetTypeSearch()}>
-                    reset search
-                </Pokeball>
-            </div>
-                <div className="auth-content">
-                { isAuth &&
-                    <BattleAdvise
-                        toggleLoading={toggleLoading}
-                        toggleError={toggleError}
-                        setSearchResult={setSearchResult}
-                        toggleFiltersActive={toggleFiltersActive}
-                        type={type}
-                    />
-                }
-                </div>
-            </div>
-
+        </div>
     </>
     );
 }

@@ -13,7 +13,6 @@ function GetCurrentPage(urlName){
         default:
             return 'Pokédex'
     }
-
 }
 
 export default GetCurrentPage;

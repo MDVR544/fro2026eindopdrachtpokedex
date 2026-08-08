@@ -48,6 +48,7 @@ function TypeFilter({ toggleLoading,
                 toggleLoading(false);
             }
         }
+
         fetchTypeFilteredData(selectedType);
 
         return function cleanup() {
@@ -56,12 +57,12 @@ function TypeFilter({ toggleLoading,
     }, [selectedType]);
 
 
-    return(
+    return (
     <div className="typeSelection">
         <h2>Search type</h2>
         {type &&
             type.results.map((type) => {
-                return(
+                return (
                     <button
                         key={type.name}
                         className={GetType(type.name)}

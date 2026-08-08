@@ -1,4 +1,4 @@
-import './account.css' ;
+import './account.css';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '/src/context/AuthContext';
@@ -22,8 +22,8 @@ function Account(){
                         <p><strong>Email:</strong> {user.email}</p>
                     </section>
                     <div className="navigation-text-content">
-                    <p>Klik <Link to="/myteams">hier</Link> om je eerste team aan te maken!</p>
-                    <p>Terug naar de Pokédex? klik <Link to="/">hier</Link></p>
+                        <p>Klik <Link to="/myteams">hier</Link> om je eerste team aan te maken!</p>
+                        <p>Terug naar de Pokédex? klik <Link to="/">hier</Link></p>
                     </div>
                 </div>
             </div>

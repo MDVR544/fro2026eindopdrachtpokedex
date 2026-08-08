@@ -1,15 +1,11 @@
-.background{
-    background-image: url("../../assets/PokemonBackground.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+.background {
     position:fixed;
     z-index: 1;
     width: 100%;
     height: 100%;
 }
 
-.account-content-wrapper{
+.account-content-wrapper {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -19,15 +15,14 @@
     margin-right: 500px;
 }
 
-.account-content{
-
+.account-content {
     padding: 20px;
     border: 8px solid var(--pokémon-grey-color);
     border-radius: 15px;
     background-color: rgba(4, 244, 4, 0.5);
 }
 
-.user-details{
+.user-details {
     font-size: 25px;
     display: flex;
     flex-direction: row;
@@ -38,7 +33,7 @@
     width: 500px;
 }
 
-.navigation-text-content{
+.navigation-text-content {
     font-size: 22px;
     display: flex;
     flex-direction: column;

@@ -4,7 +4,6 @@ import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../context/AuthContext.jsx";
 import teamValidation from "../../helpers/teamValidation/teamValidation.jsx";
 
-
 function AddPokemonToTeam({pokemonId}){
     const noviEndPoint = import.meta.env.VITE_NOVI_API;
     const noviProjectId = import.meta.env.VITE_NOVI_PROJECT_ID;
@@ -26,7 +25,7 @@ function AddPokemonToTeam({pokemonId}){
             toggleLoading(true);
 
             try {
-                const {data} = await axios.get(`${noviEndPoint}users/${user.id}/teams` ,
+                const {data} = await axios.get(`${noviEndPoint}users/${user.id}/teams`,
                     {
                         headers:
                             {
@@ -41,7 +40,7 @@ function AddPokemonToTeam({pokemonId}){
                 toggleError(true);
 
             }
-            finally{
+            finally {
                 toggleLoading(false);
             }
         }
@@ -56,8 +55,14 @@ function AddPokemonToTeam({pokemonId}){
         toggleError(false);
         toggleLoading(true);
 
+        if (selectedTeam === 0) {
+            toggleError(true);
+            toggleLoading(false);
+            setMessage('please select a team');
+            return;
+        }
         try {
-            const {data} = await axios.get(`${noviEndPoint}users/${user.id}/pokemonTeams` ,
+            const {data} = await axios.get(`${noviEndPoint}users/${user.id}/pokemonTeams`,
                 {
                     headers:
                         {
@@ -71,13 +76,14 @@ function AddPokemonToTeam({pokemonId}){
                 selectedTeam
             };
 
+
             const validationResult = teamValidation(checkedTeam);
 
-            if (validationResult.fullTeam === true){
-                setMessage('Team is full')
-            }else if(validationResult.existingPokemon === true){
-                setMessage('This pokemon is already exist in team')
-            }else {
+            if (validationResult.fullTeam === true) {
+                setMessage('Team is full');
+            } else if(validationResult.existingPokemon === true) {
+                setMessage('Pokémon is already added to this team');
+            } else {
             await axios.post(`${noviEndPoint}pokemonTeams`, {
                     teamId: selectedTeam,
                     pokemonId: pokemonId,
@@ -96,7 +102,7 @@ function AddPokemonToTeam({pokemonId}){
             console.error(e);
             toggleError(true);
         }
-        finally{
+        finally {
             toggleLoading(false);
         }
     }
@@ -130,8 +136,7 @@ function AddPokemonToTeam({pokemonId}){
                         Add to team
                     </button>
                 </label>
-                <p className="form-message">{message}</p>
-                {error && <p className="form-message">something went wrong adding pokemon to the team</p>}
+                {error && <p className="form-message">{message}</p>}
             </form>
         </div>
     )

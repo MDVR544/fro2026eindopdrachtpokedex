@@ -39,7 +39,6 @@ function GetType(type){
         default:
             return 'normal'
     }
-
 }
 
 export default GetType;

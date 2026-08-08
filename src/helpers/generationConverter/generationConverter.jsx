@@ -1,7 +1,7 @@
 
 
 function GenerationConverter(generation){
-    switch (generation){
+    switch (generation) {
         case "generation-i":
             return "Generation 1";
         case "generation-ii":

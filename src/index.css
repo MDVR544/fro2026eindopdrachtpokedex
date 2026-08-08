@@ -46,7 +46,7 @@ body {
   font-variation-settings: "wdth" 100;
 }
 
-.page-wrapper{
+.page-wrapper {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -61,12 +61,12 @@ button:hover {
   background-color: var(--pokémon-red-color);
 }
 
-button:disabled{
+button:disabled {
   cursor: not-allowed;
   background-color: var(--pokémon-grey-color);
 }
 
-.bug{
+.bug {
   background-color: var(--pokémon-type-bug-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -81,7 +81,8 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-.dark{
+
+.dark {
   background-color: var(--pokémon-type-dark-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -96,7 +97,8 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-.dragon{
+
+.dragon {
   background-color: var(--pokémon-type-dragon-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -111,7 +113,8 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-.electric{
+
+.electric {
   background-color: var(--pokémon-type-electric-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -126,7 +129,8 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-.fairy{
+
+.fairy {
   background-color: var(--pokémon-type-fairy-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -141,7 +145,8 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-.fighting{
+
+.fighting {
   background-color: var(--pokémon-type-fighting-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -156,7 +161,8 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-.fire{
+
+.fire {
   background-color: var(--pokémon-type-fire-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -171,7 +177,8 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-.flying{
+
+.flying {
   background-color: var(--pokémon-type-flying-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -186,7 +193,8 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-.ghost{
+
+.ghost {
   background-color: var(--pokémon-type-ghost-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -201,7 +209,8 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-.grass{
+
+.grass {
   background-color: var(--pokémon-type-grass-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -216,7 +225,8 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-.ground{
+
+.ground {
   background-color: var(--pokémon-type-ground-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -231,7 +241,8 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-.ice{
+
+.ice {
   background-color: var(--pokémon-type-ice-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -246,7 +257,8 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-.poison{
+
+.poison {
   background-color: var(--pokémon-type-poison-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -261,7 +273,8 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-.psychic{
+
+.psychic {
   background-color: var(--pokémon-type-psychic-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -276,7 +289,8 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-.rock{
+
+.rock {
   background-color: var(--pokémon-type-rock-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -291,7 +305,8 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-.steel{
+
+.steel {
   background-color: var(--pokémon-type-steel-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -306,7 +321,8 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-.water{
+
+.water {
   background-color: var(--pokémon-type-water-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -321,7 +337,8 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-.normal{
+
+.normal {
   background-color:var(--pokémon-type-normal-color);
   font-family: "Jersey 10", sans-serif;
   font-style: normal;
@@ -336,9 +353,3 @@ button:disabled{
   padding-left: 5px;
   padding-right: 5px;
 }
-
-
-
-
-
-

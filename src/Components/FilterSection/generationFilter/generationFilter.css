@@ -1,15 +1,16 @@
-.generation-filter{
+.generation-filter {
     display: flex;
     justify-content: space-between;
 
 }
 
-.generation-filter select{
+.generation-filter select {
     text-transform: capitalize;
     font-size: 18px;
     height: 30px;
     margin: 22px 0 0 0;
 }
-.generation-filter button{
+
+.generation-filter button {
     font-size: 18px;
 }

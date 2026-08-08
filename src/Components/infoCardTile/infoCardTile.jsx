@@ -27,7 +27,7 @@ function SmallInfoCard({endpoint, showDeleteButton, deleteFromTeam}){
         toggleLoading(true);
 
         try {
-            const {data} = await axios.get(`${noviEndPoint}users/${user.id}/favorites` ,
+            const {data} = await axios.get(`${noviEndPoint}users/${user.id}/favorites`,
                 {
                     headers:
                         {
@@ -39,14 +39,14 @@ function SmallInfoCard({endpoint, showDeleteButton, deleteFromTeam}){
                 return favorite.pokemonId === pokemonId;
             });
 
-            (isAlreadyFavorite ? toggleIsFavorite(true): toggleIsFavorite(false))
+            (isAlreadyFavorite ? toggleIsFavorite(true): toggleIsFavorite(false));
 
 
         } catch(e) {
             console.error(e);
             toggleError(true);
         }
-        finally{
+        finally {
             toggleLoading(false);
         }
     }
@@ -67,6 +67,7 @@ function SmallInfoCard({endpoint, showDeleteButton, deleteFromTeam}){
 
                 setPokemon(data);
                 getFavorites(data.id);
+
             } catch (e) {
                 if (axios.isCancel(e)) {
                     console.error('Request is canceled...');
@@ -74,6 +75,7 @@ function SmallInfoCard({endpoint, showDeleteButton, deleteFromTeam}){
                     console.error(e);
                     toggleError(true);
                 }
+
             } finally {
                 toggleLoading(false);
             }
@@ -95,13 +97,14 @@ function SmallInfoCard({endpoint, showDeleteButton, deleteFromTeam}){
         <>
             <article className= {isFavorite ? "fav-pokemon-small-card" : "pokemon-small-card"}>
                 {Object.keys(pokemon).length > 0 &&
-                    <button className="btn-large-view" type='button' onClick={() =>
-                        toggleFullInfo(true,
-                        )}>
+                    <button className="btn-large-view"
+                            type='button'
+                            onClick={() => toggleFullInfo(true,)}
+                    >
                         <div className="pokemon-small-card-content">
                             <div className="card-header-info">
-                            <h2>{pokemon.name}</h2>
-                            <h3> {IdFormater(pokemon.id)} </h3>
+                                <h2>{pokemon.name}</h2>
+                                <h3> {IdFormater(pokemon.id)} </h3>
                                 {showDeleteButton && (
                                     <Pokeball
                                         type="button"
@@ -111,10 +114,10 @@ function SmallInfoCard({endpoint, showDeleteButton, deleteFromTeam}){
                                         <p><CgClose  /></p>
                                     </Pokeball>)}
                             </div>
-                                <img
+                            <img
                                 alt="Afbeelding pokémon"
                                 src={pokemon.sprites.front_default}
-                                />
+                            />
                             <ul>
                                 {pokemon.types.map((type) => {
                                     return (
@@ -140,10 +143,10 @@ function SmallInfoCard({endpoint, showDeleteButton, deleteFromTeam}){
             >
                 {Object.keys(pokemon).length > 0 &&
                 <div className="pokemon-large-card-content">
-                    <div className="top-card-content">
+                    <div className={isFavorite ? "fav-top-card-content" : "top-card-content"}>
                     <div className="large-card-header-info">
                         <h2>{pokemon.name}</h2>
-                        <h3> {IdFormater(pokemon.id)} </h3>
+                        <h3>{IdFormater(pokemon.id)}</h3>
                     </div>
                     <img
                         alt="Afbeelding pokémon"

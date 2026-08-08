@@ -1,4 +1,4 @@
-import './generationFilter.css'
+import './generationFilter.css';
 import {useEffect, useState} from "react";
 import axios from "axios";
 import GenerationConverter from "../../../helpers/generationConverter/generationConverter.jsx";
@@ -16,7 +16,7 @@ function GenerationFilter ({ toggleLoading,
                              setIsChecked
                             })
 {
-    const genApi = import.meta.env.VITE_API_GEN
+    const genApi = import.meta.env.VITE_API_GEN;
     const [generations, setGenerations] = useState([]);
 
     useEffect(() => {
@@ -80,33 +80,33 @@ function GenerationFilter ({ toggleLoading,
         }
 
 return(
-    <div className="generation-filter">
-                <select
-                    name="generation"
-                    id="generation-select"
-                    value={selectedGen}
-                    onChange={(e)=>{setSelectedGen(e.target.value)}}
-                >
-                    <option value="">
-                        choose a generation
-                    </option>
-                    {generations.map((generation)=>{
-                        return <option
-                            key={generation.name}
-                            value={generation.name}
-                        >
-                            {GenerationConverter(generation.name)}
+        <div className="generation-filter">
+                    <select
+                        name="generation"
+                        id="generation-select"
+                        value={selectedGen}
+                        onChange={(e)=>{setSelectedGen(e.target.value)}}
+                    >
+                        <option value="">
+                            choose a generation
                         </option>
-                    })}
-                </select>
-        <Pokeball
-            type="button"
-            onClick={(e)=>fetchGenFilteredData(e)}>
-            search
-        </Pokeball>
-    </div>
-)
-
+                        {generations.map((generation)=>{
+                            return <option
+                                key={generation.name}
+                                value={generation.name}
+                            >
+                                {GenerationConverter(generation.name)}
+                            </option>
+                        })}
+                    </select>
+            <Pokeball
+                type="button"
+                onClick={(e)=>fetchGenFilteredData(e)}
+            >
+                search
+            </Pokeball>
+        </div>
+    )
 }
 
 export default GenerationFilter

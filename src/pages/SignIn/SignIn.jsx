@@ -75,7 +75,6 @@ function SignIn(){
                                     />
                             </div>
 
-                    {error && <p className="error">Combinatie van e-mailadres en wachtwoord is onjuist</p>}
 
                         <Pokeball
                             type="submit"
@@ -85,6 +84,7 @@ function SignIn(){
                             Inloggen
                         </Pokeball>
                     </form>
+                    {error && <p className="error">Combinatie van e-mailadres en wachtwoord is onjuist</p>}
 
                     <p>No account yet? please sign up <Link to="/signup">here</Link>.</p>
                 </div>

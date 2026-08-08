@@ -8,11 +8,11 @@
     color: var(--pokémon-text-color);
 }
 
-.add-fav-content{
+.add-fav-content {
     display: flex;
     flex-direction: column;
 }
 
-.system-message{
+.system-message {
     margin: 0;
 }
