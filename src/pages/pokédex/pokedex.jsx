@@ -94,7 +94,7 @@ function resetTypeSearch(){
                 name= 'search-pokemon'
                 label='search-name'
                 inputType= 'text'
-                placeholder='pokemon name'
+                placeholder='pokémon name'
                 value= {searchInput}
                 toggleLoading={toggleLoading}
                 loading={loading}

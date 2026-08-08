@@ -82,7 +82,7 @@ function AddPokemonToTeam({pokemonId}){
             if (validationResult.fullTeam === true){
                 setMessage('Team is full')
             }else if(validationResult.existingPokemon === true){
-                setMessage('This pokemon is already exist in team')
+                setMessage('Pokémon is already added to this team')
             }else {
             await axios.post(`${noviEndPoint}pokemonTeams`, {
                     teamId: selectedTeam,
