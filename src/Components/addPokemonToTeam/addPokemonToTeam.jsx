@@ -136,7 +136,7 @@ function AddPokemonToTeam({pokemonId}){
                         Add to team
                     </button>
                 </label>
-                <p className="form-message">{message}</p>
+                {error && <p className="form-message">{message}</p>}
             </form>
         </div>
     )

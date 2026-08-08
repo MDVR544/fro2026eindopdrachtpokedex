@@ -14,6 +14,7 @@ function MyTeams(){
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false);
     const [succesMessage, toggleSuccesMessage] = useState(false);
+    const [message, setMessage] = useState("");
     const [teamName, setTeamName] = useState('')
     const [userTeams, setUserTeams] = useState([]);
     const [userPokemonTeams, setUserPokemonTeams] = useState([]);
@@ -25,6 +26,8 @@ function MyTeams(){
         e.preventDefault();
         toggleError(false);
         toggleLoading(true);
+
+
 
         try {
             const newTeam = await axios.post(`${noviEndPoint}teams`, {
@@ -38,12 +41,16 @@ function MyTeams(){
                             Authorization: `Bearer ${ token }`,
                         }}
             );
+
             toggleSuccesMessage(true);
+            setMessage("Team has been added")
             setUserTeams([...userTeams, newTeam.data]);
+
 
         } catch(e) {
             console.error(e);
             toggleError(true);
+            setMessage("Please add a team name")
         }
         finally{
             toggleLoading(false);
@@ -216,8 +223,8 @@ function MyTeams(){
                         onChange={(e) => setTeamName(e.target.value)}
                     />
                 </label>
-                {succesMessage && <p>Team has been added</p>}
-                {error && <p>This team already exist, please select a different team name</p>}
+                {succesMessage && <p>{message}</p>}
+                {error && <p>{message}</p>}
                 <Pokeball
                     type="submit"
                     className="form-button"

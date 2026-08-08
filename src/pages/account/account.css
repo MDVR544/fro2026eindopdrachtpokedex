@@ -1,8 +1,4 @@
 .background{
-    background-image: url("../../assets/PokemonBackground.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
     position:fixed;
     z-index: 1;
     width: 100%;
@@ -20,7 +16,6 @@
 }
 
 .account-content{
-
     padding: 20px;
     border: 8px solid var(--pokémon-grey-color);
     border-radius: 15px;

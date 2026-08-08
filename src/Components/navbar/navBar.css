@@ -100,15 +100,15 @@
 
 .navbar-element-yellow{
     display: flex;
-    border-bottom: 4px solid var(--pokémon-yellow-color);
-    border-right: 4px solid var(--pokémon-yellow-color);
+    border-bottom: 4px solid var(--pokémon-type-water-color);
+    border-right: 4px solid var(--pokémon-type-water-color);
     gap: 5px;
     box-shadow: 0 2px 4px rgba(0,0,0,.25);
 }
 
 .circle-yellow{
-    background-color: var(--pokémon-yellow-color);
-    color: var(--pokémon-yellow-color);
+    background-color: var(--pokémon-type-water-color);
+    color: var(--pokémon-type-water-color);
     border: 1px solid var(--pokémon-border-color);
     border-radius: 50%;
     box-shadow: 0 2px 4px rgba(0,0,0,.25);
@@ -117,15 +117,15 @@
 
 .navbar-element-green{
     display: flex;
-    border-bottom: 4px solid var(--pokémon-green-color);
-    border-right: 4px solid var(--pokémon-green-color);
+    border-bottom: 4px solid var(--pokémon-type-grass-color);
+    border-right: 4px solid var(--pokémon-type-grass-color);
     gap: 5px;
     box-shadow: 0 2px 4px rgba(0,0,0,.25);
 }
 
 .circle-green{
-    background-color: var(--pokémon-green-color);
-    color: var(--pokémon-green-color);
+    background-color: var(--pokémon-type-grass-color);
+    color: var(--pokémon-type-grass-color);
     border: 1px solid var(--pokémon-border-color);
     border-radius: 50%;
     box-shadow: 0 2px 4px rgba(0,0,0,.25);

@@ -77,7 +77,6 @@ function SignUP(){
                                 />
                         </div>
 
-                        {error && <p>This account already exist, please select a different e-mailadres</p>}
 
                         <Pokeball
                             type="submit"
@@ -87,6 +86,7 @@ function SignUP(){
                             Registreren
                         </Pokeball>
                     </form>
+                    {error && <p>This account already exist, please select a different e-mailadres</p>}
 
                     <p>Already have an account? please sign in <Link to="/signin">here</Link>.</p>
                 </div>
