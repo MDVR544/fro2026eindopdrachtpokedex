@@ -1,4 +1,4 @@
-.my-teams-page-content{
+.my-teams-page-content {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -7,12 +7,13 @@
     background-color: rgba(255, 69, 69, 0.3) ;
     gap: 10px;
 }
-.form-button{
+
+.form-button {
     min-width: 200px;
     min-height: 90px;
 }
 
-.add-team-container{
+.add-team-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start ;
@@ -24,13 +25,13 @@
     gap: 10px;
 }
 
-.add-team-container p{
+.add-team-container p {
  font-weight: bold;
     font-size: 18px;
 }
 
 
-.form-create-team{
+.form-create-team {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,7 +43,7 @@
     padding-left: 5px;
 }
 
-.team-container{
+.team-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,14 +55,13 @@
     padding: 8px;
 }
 
-.delete-team-button{
+.delete-team-button {
     min-width: 200px;
     min-height: 90px;
 }
 
-.team-container-header-content{
+.team-container-header-content {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
-

@@ -39,8 +39,7 @@ function SignUP(){
         } catch(e) {
             console.error(e);
             toggleError(true);
-        }
-        finally{
+        } finally {
         toggleLoading(false);
         }
     }
@@ -66,7 +65,6 @@ function SignUP(){
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
-
                             <label htmlFor="password-field">Wachtwoord:</label>
                                 <input
                                     type="password"
@@ -76,8 +74,6 @@ function SignUP(){
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                         </div>
-
-
                         <Pokeball
                             type="submit"
                             className="form-button"
@@ -87,7 +83,6 @@ function SignUP(){
                         </Pokeball>
                     </form>
                     {error && <p>This account already exist, please select a different e-mailadres</p>}
-
                     <p>Already have an account? please sign in <Link to="/signin">here</Link>.</p>
                 </div>
             </div>

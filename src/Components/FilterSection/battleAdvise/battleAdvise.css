@@ -1,13 +1,13 @@
-.strengths-weaknesses{
+.strengths-weaknesses {
     display: flex;
     justify-content: space-between;
 }
 
-.strengths-weaknesses ul{
+.strengths-weaknesses ul {
     list-style: none;
 }
 
-.strengths-weaknesses li{
+.strengths-weaknesses li {
     border-bottom: 2px solid   var(--pokémon-grey-color);
     text-transform: capitalize;
 }

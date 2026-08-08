@@ -1,7 +1,6 @@
 import './App.css'
 import {Routes, Route, Navigate} from "react-router-dom";
 import Account from "./pages/account/account.jsx";
-import Favorites from "./Components/FilterSection/favorites/favorites.jsx";
 import MyTeams from "./pages/myTeams/myTeams.jsx";
 import Pokedex from "./pages/pokédex/pokedex.jsx";
 import NotFound from "./pages/notFound/notFound.jsx";
@@ -14,8 +13,6 @@ import {AuthContext} from "./context/AuthContext.jsx";
 
 function App() {
     const { isAuth } = useContext(AuthContext);
-
-
 
   return (
     <>

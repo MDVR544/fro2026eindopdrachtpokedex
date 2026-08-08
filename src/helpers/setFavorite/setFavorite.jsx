@@ -19,7 +19,7 @@ function SetFavorite({pokemonId, favPokemon, toggleIsFavorite}){
         toggleLoading(true);
 
         try {
-            const {data} = await axios.get(`${noviEndPoint}users/${user.id}/favorites` ,
+            const {data} = await axios.get(`${noviEndPoint}users/${user.id}/favorites`,
                 {
                     headers:
                         {
@@ -43,35 +43,38 @@ function SetFavorite({pokemonId, favPokemon, toggleIsFavorite}){
                 );
                 toggleIsFavorite(false)
 
-            }else{
+            } else {
+                await axios.post(`${noviEndPoint}favorites`, {
+                        userId: user.id,
+                        pokemonId: pokemonId
+                    },
+                    {
+                        headers:
+                            {
+                                'novi-education-project-id': noviProjectId,
+                                Authorization: `Bearer ${ token }`,
+                            }}
+                );
+                    toggleIsFavorite(true)
 
-            await axios.post(`${noviEndPoint}favorites`, {
-                    userId: user.id,
-                    pokemonId: pokemonId
-                },
-                {
-                    headers:
-                        {
-                            'novi-education-project-id': noviProjectId,
-                            Authorization: `Bearer ${ token }`,
-                        }}
-            );
-                toggleIsFavorite(true)
-
-            }
+                }
         } catch(e) {
             console.error(e);
             toggleError(true);
 
         }
-        finally{
+        finally {
             toggleLoading(false);
         }
     }
 
-    return(
+    return (
         <div className="add-fav-content">
-            <button className="btn-fav" type="button" onClick={()=> {(favorite(pokemonId))}}>
+            <button
+                className="btn-fav"
+                type="button"
+                onClick={()=> {(favorite(pokemonId))}}
+            >
                 {favPokemon ? "Delete Favorite" : "Favorite"}
             </button>
 

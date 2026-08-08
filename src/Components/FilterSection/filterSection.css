@@ -1,4 +1,4 @@
-.filter-side-bar{
+.filter-side-bar {
     color: var(--pokémon-white-color);
     display: flex;
     flex-direction: column;
@@ -7,41 +7,42 @@
     background-color: rgba(255, 69, 69, 1) ;
 }
 
-.searchSelection{
+.searchSelection {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.search-content{
+.search-content {
     display: flex;
     justify-content: space-between;
 }
 
-.searchSelection input{
+.searchSelection input {
     font-size: 18px;
     text-transform: capitalize;
     margin: 22px 0 0 0;
 }
 
-.searchSelection button{
+.searchSelection button {
     font-size: 18px;
 }
 
-.filter-content{
+.filter-content {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
-.btn-reset{
+
+.btn-reset {
     display: flex;
     justify-content: center;
 }
-.auth-content{
+
+.auth-content {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
     gap: 15px;
     border-top: 2px solid grey;
 }
-

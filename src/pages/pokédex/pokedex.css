@@ -1,17 +1,17 @@
-.pokedex-page{
+.pokedex-page {
     display: flex;
     flex: 1;
     overflow: hidden;
     background-color: rgba(255, 69, 69, 0.3) ;
 }
 
-.info-content{
+.info-content {
     margin-right: 30px;
     flex: 1;
     overflow-y: auto;
 }
 
-.pokemon-tiles{
+.pokemon-tiles {
     display: flex;
     flex-wrap: wrap;
     gap: 15px 15px;
@@ -19,11 +19,11 @@
     justify-content: center;
 }
 
-.navigation-buttons{
+.navigation-buttons {
     display: flex;
     justify-content: space-between;
 }
 
-.navigation-buttons button{
+.navigation-buttons button {
     width: 50px;
 }

@@ -1,4 +1,4 @@
-import './battleAdvise.css'
+import './battleAdvise.css';
 import GetType from "../../../helpers/getType/getType.jsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
@@ -13,7 +13,7 @@ function BattleAdvise({ toggleLoading,
 {
     const typeApi = import.meta.env.VITE_API_TYPE;
 
-    const [strengths, setStrengths] = useState([])
+    const [strengths, setStrengths] = useState([]);
     const [weaknesses, setWeaknesses] = useState ([]);
     const [typeToCounter, setTypeToCounter] = useState("");
 
@@ -30,7 +30,7 @@ function BattleAdvise({ toggleLoading,
             try {
                 const {data} = await axios.get(`${typeApi}${typeToCounter}`, {
                 });
-                setStrengths(data.damage_relations.double_damage_to)
+                setStrengths(data.damage_relations.double_damage_to);
                 setWeaknesses(data.damage_relations.double_damage_from);
             } catch (e) {
                 if (axios.isCancel(e)) {
@@ -105,14 +105,14 @@ function BattleAdvise({ toggleLoading,
                                                         </li>
                                                     )
                                                 })
-                                            ) :
+                                            ):
                                             <p>no types available</p>
                                         }
                                     </ul>
                                 </span>
 
                             </div>
-                        ) :
+                        ):
                         <h3>Choose a type to see its strengths and weaknesses</h3>
                     }
                 </div>

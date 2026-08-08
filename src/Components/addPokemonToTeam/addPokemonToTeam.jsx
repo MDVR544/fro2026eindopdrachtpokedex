@@ -25,7 +25,7 @@ function AddPokemonToTeam({pokemonId}){
             toggleLoading(true);
 
             try {
-                const {data} = await axios.get(`${noviEndPoint}users/${user.id}/teams` ,
+                const {data} = await axios.get(`${noviEndPoint}users/${user.id}/teams`,
                     {
                         headers:
                             {
@@ -40,7 +40,7 @@ function AddPokemonToTeam({pokemonId}){
                 toggleError(true);
 
             }
-            finally{
+            finally {
                 toggleLoading(false);
             }
         }
@@ -56,13 +56,13 @@ function AddPokemonToTeam({pokemonId}){
         toggleLoading(true);
 
         if (selectedTeam === 0) {
-            toggleError(true)
+            toggleError(true);
             toggleLoading(false);
-            setMessage('please select a team')
+            setMessage('please select a team');
             return;
         }
         try {
-            const {data} = await axios.get(`${noviEndPoint}users/${user.id}/pokemonTeams` ,
+            const {data} = await axios.get(`${noviEndPoint}users/${user.id}/pokemonTeams`,
                 {
                     headers:
                         {
@@ -79,11 +79,11 @@ function AddPokemonToTeam({pokemonId}){
 
             const validationResult = teamValidation(checkedTeam);
 
-            if (validationResult.fullTeam === true){
-                setMessage('Team is full')
-            }else if(validationResult.existingPokemon === true){
-                setMessage('Pokémon is already added to this team')
-            }else {
+            if (validationResult.fullTeam === true) {
+                setMessage('Team is full');
+            } else if(validationResult.existingPokemon === true) {
+                setMessage('Pokémon is already added to this team');
+            } else {
             await axios.post(`${noviEndPoint}pokemonTeams`, {
                     teamId: selectedTeam,
                     pokemonId: pokemonId,
@@ -102,7 +102,7 @@ function AddPokemonToTeam({pokemonId}){
             console.error(e);
             toggleError(true);
         }
-        finally{
+        finally {
             toggleLoading(false);
         }
     }

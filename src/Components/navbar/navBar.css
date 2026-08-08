@@ -6,18 +6,18 @@
     z-index: 5;
 }
 
-.navbar-wrapper a{
+.navbar-wrapper a {
     color: var(--pokémon-border-color);
     text-decoration: none;
     padding-right: 3px;
 }
 
-.navbar-wrapper a:hover{
+.navbar-wrapper a:hover {
      color: var(--pokémon-white-color);
      text-decoration: none;
 }
 
-.navbar-wrapper button{
+.navbar-wrapper button {
     font-size: 16px;
     height: 70px;
     width: 70px;
@@ -29,7 +29,7 @@
     margin-right: 20px;
 }
 
-.page-logger{
+.page-logger {
     background-color: var(--pokémon-blue-color);
     font-size: 18px;
     height: 65px;
@@ -53,7 +53,7 @@
     height: 50px;
 }
 
-.navBar-list-logged-in{
+.navBar-list-logged-in {
     display: flex;
     list-style: none;
     flex-direction: row;
@@ -70,7 +70,7 @@
     height: 60px;
 }
 
-.navBar-list-logged-out{
+.navBar-list-logged-out {
     display: flex;
     list-style: none;
     flex-direction: row;
@@ -81,7 +81,7 @@
     align-items: center;
 }
 
-.navbar-element-red{
+.navbar-element-red {
     display: flex;
     border-bottom: 4px solid var(--pokémon-type-fire-color);
     border-right: 4px solid var(--pokémon-type-fire-color);
@@ -89,7 +89,7 @@
     box-shadow: 0 2px 4px rgba(0,0,0,.25);
 }
 
-.circle-red{
+.circle-red {
     background-color: var(--pokémon-type-fire-color);
     color: var(--pokémon-type-fire-color);
     border: 1px solid var(--pokémon-border-color);
@@ -98,7 +98,7 @@
     width: 18px;
 }
 
-.navbar-element-yellow{
+.navbar-element-yellow {
     display: flex;
     border-bottom: 4px solid var(--pokémon-type-water-color);
     border-right: 4px solid var(--pokémon-type-water-color);
@@ -106,7 +106,7 @@
     box-shadow: 0 2px 4px rgba(0,0,0,.25);
 }
 
-.circle-yellow{
+.circle-yellow {
     background-color: var(--pokémon-type-water-color);
     color: var(--pokémon-type-water-color);
     border: 1px solid var(--pokémon-border-color);
@@ -115,7 +115,7 @@
     width: 18px;
 }
 
-.navbar-element-green{
+.navbar-element-green {
     display: flex;
     border-bottom: 4px solid var(--pokémon-type-grass-color);
     border-right: 4px solid var(--pokémon-type-grass-color);
@@ -123,7 +123,7 @@
     box-shadow: 0 2px 4px rgba(0,0,0,.25);
 }
 
-.circle-green{
+.circle-green {
     background-color: var(--pokémon-type-grass-color);
     color: var(--pokémon-type-grass-color);
     border: 1px solid var(--pokémon-border-color);

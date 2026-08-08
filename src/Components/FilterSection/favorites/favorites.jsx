@@ -1,4 +1,4 @@
-import './favorites.css'
+import './favorites.css';
 import {useContext} from "react";
 import axios from "axios";
 import {AuthContext} from "../../../context/AuthContext.jsx";
@@ -56,13 +56,12 @@ function Favorites({   toggleError,
             }
         }
 
-
     const checkHandler = () => {
-        setIsChecked(!isChecked)
-        const showFavorites = !isChecked
+        setIsChecked(!isChecked);
+        const showFavorites = !isChecked;
 
         if (showFavorites === true) {
-            fetchFavPokemonData()
+            fetchFavPokemonData();
             setTypeFilteredPokemon([]);
             toggleFiltersActive(true);
             setSearchResult("");
@@ -71,7 +70,7 @@ function Favorites({   toggleError,
             setSelectedGen('');
         } else {
             controller.abort();
-            resetTypeSearch()
+            resetTypeSearch();
         }
     }
     return (
